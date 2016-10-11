@@ -24,15 +24,23 @@ void MainGame::SetupGame() {
 	printf("Setting up game...");
 
 	/////// TEMPORARY
+	_window.setMouseCursorVisible(false);
 
 	// Load sounds
 	_shootSoundBuffer.loadFromFile("assets/sounds/sfx_wpn_laser6.wav");
 	_shootSound.setBuffer(_shootSoundBuffer);
+	_shootSound.setVolume(35);
 	_music.openFromFile("assets/music/through space.ogg");
 	_music.play();
 
+	// Load cursor
+	_cursorTexture.loadFromFile("assets/textures/Ardentryst-target2.png");
+	_cursor.setTexture(_cursorTexture);
+	_cursor.setOrigin(_cursor.getGlobalBounds().width / 2, _cursor.getGlobalBounds().height / 2);
+
 	// Load player
 	_playerTexture.loadFromFile("assets/textures/playerShip1_blue.png");
+	_playerTexture.setSmooth(true);
 	_player.setTexture(_playerTexture);
 	_player.setOrigin(_player.getGlobalBounds().width/2, _player.getGlobalBounds().height/2);
 	_player.setPosition(0.50f * WINDOW_WIDTH, 0.85f * WINDOW_HEIGHT);
@@ -91,6 +99,8 @@ void MainGame::ProcessInput() {
 				float adjacent = playerPosition.y - (float)event.mouseMove.y;
 				float angle = atan2(adjacent, opposite) * 180/M_PI - 90;
 				_player.setRotation(angle);
+
+				_cursor.setPosition(event.mouseMove.x, event.mouseMove.y);
 				break;
 		}
 	}
@@ -108,6 +118,7 @@ void MainGame::Draw() {
 	// TEMPORARY
 	_window.draw(_background);
 	_window.draw(_player);
+	_window.draw(_cursor);
 	////////////////
 
 	// Display current frame in window

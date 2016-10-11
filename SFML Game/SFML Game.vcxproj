@@ -62,10 +62,16 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /Y /I "$(ProjectDir)assets" "$(Outdir)assets"
+xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -74,15 +80,23 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>sfml-window.lib;sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /Y /I "$(ProjectDir)assets" "$(Outdir)assets"
+xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="headers\MainGame.h" />
+    <ClInclude Include="headers\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MainGame.cpp" />
@@ -92,12 +106,17 @@
     <Image Include="assets\textures\blue.png" />
     <Image Include="assets\textures\darkPurple.png" />
     <Image Include="assets\textures\playerShip1_blue.png" />
+    <Image Include="assets\textures\tochLit.ico" />
+    <Image Include="assets\textures\tochLit.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\sfx_wpn_laser6.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\music\through space.ogg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SFML Game.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

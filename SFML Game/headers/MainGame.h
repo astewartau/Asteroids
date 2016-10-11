@@ -29,6 +29,9 @@ private:
 
 
 	///////////////// TEMPORARY
+	sf::Texture _cursorTexture;
+	sf::Sprite _cursor;
+
 	sf::Texture _playerTexture;
 	sf::Sprite _player;
 

@@ -16,12 +16,12 @@
     <Filter Include="Header Files\SFML">
       <UniqueIdentifier>{9cfe5f04-adcb-4570-80de-150e964da16e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\SFML">
-      <UniqueIdentifier>{e3deff2c-917b-4eda-8a90-ce32158c0a8c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\MainGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="headers\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -43,6 +43,12 @@
     <Image Include="assets\textures\blue.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\textures\tochLit.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\tochLit.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\sfx_wpn_laser6.wav">
@@ -50,6 +56,13 @@
     </Media>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\music\through space.ogg" />
+    <None Include="assets\music\through space.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SFML Game.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
