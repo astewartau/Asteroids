@@ -1,6 +1,9 @@
 #include "MainGame.h"
 #include <cstdio>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 MainGame::MainGame() {
 	_quit = false;
 }
@@ -21,16 +24,20 @@ void MainGame::SetupGame() {
 	printf("Setting up game...");
 
 	/////// TEMPORARY
+
+	// Load sounds
 	_shootSoundBuffer.loadFromFile("assets/sounds/sfx_wpn_laser6.wav");
 	_shootSound.setBuffer(_shootSoundBuffer);
 	_music.openFromFile("assets/music/through space.ogg");
 	_music.play();
 
+	// Load player
 	_playerTexture.loadFromFile("assets/textures/playerShip1_blue.png");
 	_player.setTexture(_playerTexture);
 	_player.setOrigin(_player.getGlobalBounds().width/2, _player.getGlobalBounds().height/2);
 	_player.setPosition(0.50f * WINDOW_WIDTH, 0.85f * WINDOW_HEIGHT);
 
+	// Load background
 	_backgroundTexture.loadFromFile("assets/textures/blue.png");
 	_backgroundTexture.setRepeated(true);
 	_background.setTextureRect(sf::IntRect{0, 0, WINDOW_WIDTH, WINDOW_HEIGHT});
@@ -64,7 +71,6 @@ void MainGame::ProcessInput() {
 				_window.close();
 				_quit = true;
 				break;
-			// TEMPORARY
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::Right) {
 					_player.move(10, 0);
@@ -74,17 +80,24 @@ void MainGame::ProcessInput() {
 					_player.move(0, -10);
 				} else if (event.key.code == sf::Keyboard::Down) {
 					_player.move(0, 10);
-				} else if (event.key.code == sf::Keyboard::Space) {
-					_shootSound.play();
 				}
 				break;
-			////////////////
+			case sf::Event::MouseButtonPressed:
+				_shootSound.play();
+				break;
+			case sf::Event::MouseMoved:
+				sf::Vector2f playerPosition = _player.getPosition();
+				float opposite = playerPosition.x - (float)event.mouseMove.x;
+				float adjacent = playerPosition.y - (float)event.mouseMove.y;
+				float angle = atan2(adjacent, opposite) * 180/M_PI - 90;
+				_player.setRotation(angle);
+				break;
 		}
 	}
 }
 
 void MainGame::Update() {
-
+	
 }
 
 void MainGame::Draw() {
