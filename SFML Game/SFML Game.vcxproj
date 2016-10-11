@@ -48,14 +48,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)headers;$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(ProjectDir)\build\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\compile\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)\build\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)\compile\$(Configuration)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)headers;$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(ProjectDir)\build\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)\compile\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)\build\$(Configuration)</OutDir>
+    <IntDir>$(ProjectDir)\compile\$(Configuration)</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
