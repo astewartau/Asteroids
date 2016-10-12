@@ -103,6 +103,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\textures\Ardentryst-target2.png" />
     <Image Include="assets\textures\blue.png" />
     <Image Include="assets\textures\darkPurple.png" />
     <Image Include="assets\textures\playerShip1_blue.png" />
@@ -110,13 +111,13 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <Image Include="assets\textures\tochLit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="assets\sounds\sfx_wpn_laser6.wav" />
+    <ResourceCompile Include="SFML Game.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\music\through space.ogg" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SFML Game.rc" />
+    <Media Include="assets\sounds\sfx_wpn_laser6.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
