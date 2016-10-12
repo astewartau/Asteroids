@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="22">
+ <tileset firstgid="1" name="tileset1" tilewidth="32" tileheight="32" tilecount="28" columns="4">
+  <image source="tileset1.png" trans="ff00ff" width="128" height="224"/>
+  <tile id="2">
+   <objectgroup draworder="index"/>
+  </tile>
+  <tile id="12">
+   <objectgroup draworder="index"/>
+  </tile>
+ </tileset>
+ <layer name="Backdrop" width="15" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFxAImJDwKRgG1AAARfAAH
+  </data>
+ </layer>
+ <objectgroup name="Collisions">
+  <object id="16" name="Box" gid="3" x="0" y="128" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup name="Characters">
+  <object id="15" name="Player" gid="13" x="0" y="32" width="32" height="32"/>
+ </objectgroup>
+</map>

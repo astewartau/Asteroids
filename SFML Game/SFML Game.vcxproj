@@ -65,7 +65,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies);zlib.lib;pugi-d.lib;tmx-loader-d.lib</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
@@ -85,7 +85,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>sfml-window.lib;sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-window.lib;sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;%(AdditionalDependencies);zlib.lib;pugi.lib;zlib.lib;tmx-loader.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -96,11 +96,13 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="headers\MainGame.h" />
+    <ClInclude Include="headers\Player.h" />
     <ClInclude Include="headers\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MainGame.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\blue.png" />

@@ -1,9 +1,6 @@
 #include "MainGame.h"
 #include <cstdio>
 
-#define _USE_MATH_DEFINES
-#include <math.h>
-
 MainGame::MainGame() {
 	_quit = false;
 }
@@ -23,34 +20,21 @@ void MainGame::InitSystems() {
 void MainGame::SetupGame() {
 	printf("Setting up game...");
 
-	/////// TEMPORARY
-	_window.setMouseCursorVisible(false);
+	// Load map
+	_mapLoader = new tmx::MapLoader("assets/maps");
+	_mapLoader->Load("map3.tmx");
 
-	// Load sounds
-	_shootSoundBuffer.loadFromFile("assets/sounds/sfx_wpn_laser6.wav");
-	_shootSound.setBuffer(_shootSoundBuffer);
-	_shootSound.setVolume(35);
-	_music.openFromFile("assets/music/through space.ogg");
-	_music.play();
-
-	// Load cursor
-	_cursorTexture.loadFromFile("assets/textures/Ardentryst-target2.png");
-	_cursor.setTexture(_cursorTexture);
-	_cursor.setOrigin(_cursor.getGlobalBounds().width / 2, _cursor.getGlobalBounds().height / 2);
-
-	// Load player
-	_playerTexture.loadFromFile("assets/textures/playerShip1_blue.png");
-	_playerTexture.setSmooth(true);
-	_player.setTexture(_playerTexture);
-	_player.setOrigin(_player.getGlobalBounds().width/2, _player.getGlobalBounds().height/2);
-	_player.setPosition(0.50f * WINDOW_WIDTH, 0.85f * WINDOW_HEIGHT);
-
-	// Load background
-	_backgroundTexture.loadFromFile("assets/textures/blue.png");
-	_backgroundTexture.setRepeated(true);
-	_background.setTextureRect(sf::IntRect{0, 0, WINDOW_WIDTH, WINDOW_HEIGHT});
-	_background.setTexture(_backgroundTexture);
-	////////////////////////////
+	std::vector<tmx::MapLayer>& layers = _mapLoader->GetLayers();
+	for (auto& layer : layers) {
+		if (layer.type == tmx::ObjectGroup) {
+			for (auto& obj : layer.objects) {
+				if (layer.name == "Characters") {
+					_player = new Player(&obj);
+				}
+			}
+		}
+	}
+	
 
 	printf("Done!\n");
 }
@@ -79,47 +63,34 @@ void MainGame::ProcessInput() {
 				_window.close();
 				_quit = true;
 				break;
-			case sf::Event::KeyPressed:
-				if (event.key.code == sf::Keyboard::Right) {
-					_player.move(10, 0);
-				} else if (event.key.code == sf::Keyboard::Left) {
-					_player.move(-10, 0);
-				} else if (event.key.code == sf::Keyboard::Up) {
-					_player.move(0, -10);
-				} else if (event.key.code == sf::Keyboard::Down) {
-					_player.move(0, 10);
-				}
-				break;
-			case sf::Event::MouseButtonPressed:
-				_shootSound.play();
-				break;
-			case sf::Event::MouseMoved:
-				sf::Vector2f playerPosition = _player.getPosition();
-				float opposite = playerPosition.x - (float)event.mouseMove.x;
-				float adjacent = playerPosition.y - (float)event.mouseMove.y;
-				float angle = atan2(adjacent, opposite) * 180/M_PI - 90;
-				_player.setRotation(angle);
-
-				_cursor.setPosition(event.mouseMove.x, event.mouseMove.y);
-				break;
 		}
 	}
 }
 
 void MainGame::Update() {
-	
+	_player->Update();
+	std::vector<tmx::MapLayer>& layers = _mapLoader->GetLayers();
+	for (auto& layer : layers) {
+		if (layer.type == tmx::ObjectGroup) {
+			for (auto& obj : layer.objects) {
+				if (layer.name == "Collisions") {
+					auto playerPosition = _player->GetPosition();
+					if (obj.Contains(playerPosition)) {
+						_player->SetGrounded(true);
+						break; //don't test more points than you need
+					}
+				}
+			}
+		}
+	}
 }
 
 void MainGame::Draw() {
 	// Start by clearing the window to black
 	_window.clear(sf::Color::Black);
 
-	// Draw player to window
-	// TEMPORARY
-	_window.draw(_background);
-	_window.draw(_player);
-	_window.draw(_cursor);
-	////////////////
+	// Draw map to screen
+	_mapLoader->Draw(_window, tmx::MapLayer::All, false);
 
 	// Display current frame in window
 	_window.display();

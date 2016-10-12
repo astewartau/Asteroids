@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="11" height="10" tilewidth="70" tileheight="70" nextobjectid="31">
+ <tileset firstgid="1" name="tiles_spritesheet" tilewidth="70" tileheight="70" spacing="2" tilecount="156" columns="12">
+  <image source="tiles_spritesheet.png" width="914" height="936"/>
+ </tileset>
+ <tileset firstgid="157" name="p1_front" tilewidth="66" tileheight="92" tilecount="1" columns="0">
+  <tile id="0">
+   <image width="66" height="92" source="p1_front.png"/>
+  </tile>
+ </tileset>
+ <objectgroup name="Collision">
+  <object id="30" gid="104" x="0.333333" y="495.667" width="70" height="70"/>
+ </objectgroup>
+ <objectgroup name="Characters">
+  <object id="22" name="Player" gid="157" x="0" y="280" width="66" height="92"/>
+ </objectgroup>
+</map>

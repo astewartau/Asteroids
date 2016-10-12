@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>
-
-
+#include <tmx\MapLoader.h>
+#include "Player.h"
 class MainGame {
 public:
 	MainGame();
@@ -29,17 +29,7 @@ private:
 
 
 	///////////////// TEMPORARY
-	sf::Texture _cursorTexture;
-	sf::Sprite _cursor;
-
-	sf::Texture _playerTexture;
-	sf::Sprite _player;
-
-	sf::Texture _backgroundTexture;
-	sf::Sprite _background;
-
-	sf::SoundBuffer _shootSoundBuffer;
-	sf::Sound _shootSound;
-	sf::Music _music;
+	tmx::MapLoader* _mapLoader;
+	Player* _player;
 	//////////////////////////////////////////////
 };
