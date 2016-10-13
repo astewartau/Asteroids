@@ -1,12 +1,23 @@
 #include "Player.h"
 
-Player::Player(tmx::MapObject * object) {
-	_object = object;
+Player::Player(sf::Vector2f position) {
+	sf::Texture* texture = new sf::Texture();
+	texture->loadFromFile("assets/textures/p1_front.png");
+	_sprite = new sf::Sprite(*texture);
+	_sprite->setOrigin(_sprite->getGlobalBounds().width / 2.0f, _sprite->getGlobalBounds().height);
+	_sprite->setPosition(position);
 }
 
 sf::Vector2f Player::GetPosition() {
-	auto aabb = _object->GetPosition();
-	return sf::Vector2f{ aabb.x + 16, aabb.y + 32 };
+	return _sprite->getPosition();
+}
+
+bool Player::Grounded() {
+	return _grounded;
+}
+
+void Player::SetPosition(float x, float y) {
+	_sprite->setPosition(x, y);
 }
 
 void Player::SetGrounded(bool grounded) {
@@ -14,13 +25,15 @@ void Player::SetGrounded(bool grounded) {
 	_yVelocity = 0;
 }
 
-tmx::MapObject * Player::GetObject() {
-	return _object;
+void Player::draw(sf::RenderTarget & target, sf::RenderStates states) const {
+	target.draw(*_sprite);
 }
 
 void Player::Update() {
-	_object->Move(_xVelocity, _yVelocity);
+	_sprite->move(_xVelocity, _yVelocity);
 	if (!_grounded && _yVelocity <= 10) {
 		_yVelocity += 1;
+	} else if (_grounded) {
+		_yVelocity = 0;
 	}
 }

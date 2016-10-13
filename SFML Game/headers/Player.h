@@ -1,16 +1,17 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include <tmx\MapObject.h>
 
-class Player {
+class Player : public sf::Drawable {
 public:
-	Player(tmx::MapObject* object);
+	Player(sf::Vector2f position);
 	sf::Vector2f GetPosition();
+	bool Grounded();
+	void SetPosition(float x, float y);
 	void Update();
 	void SetGrounded(bool grounded);
-	tmx::MapObject* GetObject();
 private:
-	tmx::MapObject* _object;
+	sf::Sprite* _sprite;
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	bool _grounded;
 	float _xVelocity, _yVelocity;
 };

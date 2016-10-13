@@ -85,7 +85,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>sfml-window.lib;sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;%(AdditionalDependencies);zlib.lib;pugi.lib;zlib.lib;tmx-loader.lib</AdditionalDependencies>
+      <AdditionalDependencies>sfml-window.lib;sfml-system.lib;sfml-graphics.lib;sfml-audio.lib;%(AdditionalDependencies);zlib.lib;pugi.lib;tmx-loader.lib</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
@@ -98,6 +98,14 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClInclude Include="headers\MainGame.h" />
     <ClInclude Include="headers\Player.h" />
     <ClInclude Include="headers\resource.h" />
+    <ClInclude Include="include\tmx\DebugShape.hpp" />
+    <ClInclude Include="include\tmx\Export.hpp" />
+    <ClInclude Include="include\tmx\Helpers.hpp" />
+    <ClInclude Include="include\tmx\Log.hpp" />
+    <ClInclude Include="include\tmx\MapLayer.hpp" />
+    <ClInclude Include="include\tmx\MapLoader.hpp" />
+    <ClInclude Include="include\tmx\MapObject.hpp" />
+    <ClInclude Include="include\tmx\QuadTreeNode.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\MainGame.cpp" />
@@ -105,8 +113,10 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClCompile Include="source\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\textures\Ardentryst-target2.png" />
     <Image Include="assets\textures\blue.png" />
     <Image Include="assets\textures\darkPurple.png" />
+    <Image Include="assets\textures\p1_front.png" />
     <Image Include="assets\textures\playerShip1_blue.png" />
     <Image Include="assets\textures\tochLit.ico" />
     <Image Include="assets\textures\tochLit.png" />

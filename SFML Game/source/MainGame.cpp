@@ -14,6 +14,9 @@ void MainGame::Go() {
 void MainGame::InitSystems() {
 	printf("Creating window...");
 	_window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
+	sf::Image Icon;
+	Icon.loadFromFile("assets/textures/tochLit.png");
+	_window.setIcon(70, 70, Icon.getPixelsPtr());
 	printf("Done!\n");
 }
 
@@ -22,19 +25,18 @@ void MainGame::SetupGame() {
 
 	// Load map
 	_mapLoader = new tmx::MapLoader("assets/maps");
-	_mapLoader->Load("map3.tmx");
+	_mapLoader->load("map5.tmx");
 
-	std::vector<tmx::MapLayer>& layers = _mapLoader->GetLayers();
+	std::vector<tmx::MapLayer>& layers = _mapLoader->getLayers();
 	for (auto& layer : layers) {
-		if (layer.type == tmx::ObjectGroup) {
+		if (layer.type == tmx::MapLayerType::ObjectGroup) {
 			for (auto& obj : layer.objects) {
 				if (layer.name == "Characters") {
-					_player = new Player(&obj);
+					_player = new Player(sf::Vector2f{obj.getCentre().x, obj.getAABB().top + obj.getAABB().height});
 				}
 			}
 		}
 	}
-	
 
 	printf("Done!\n");
 }
@@ -69,15 +71,19 @@ void MainGame::ProcessInput() {
 
 void MainGame::Update() {
 	_player->Update();
-	std::vector<tmx::MapLayer>& layers = _mapLoader->GetLayers();
-	for (auto& layer : layers) {
-		if (layer.type == tmx::ObjectGroup) {
-			for (auto& obj : layer.objects) {
-				if (layer.name == "Collisions") {
-					auto playerPosition = _player->GetPosition();
-					if (obj.Contains(playerPosition)) {
-						_player->SetGrounded(true);
-						break; //don't test more points than you need
+
+	if (!_player->Grounded()) {
+		std::vector<tmx::MapLayer>& layers = _mapLoader->getLayers();
+		for (auto& layer : layers) {
+			if (layer.type == tmx::ObjectGroup) {
+				for (auto& obj : layer.objects) {
+					if (layer.name == "Collisions") {
+						auto playerPosition = _player->GetPosition();
+						if (obj.contains(playerPosition)) {
+							_player->SetGrounded(true);
+							_player->SetPosition(_player->GetPosition().x, obj.getAABB().top);
+							break;
+						}
 					}
 				}
 			}
@@ -90,7 +96,8 @@ void MainGame::Draw() {
 	_window.clear(sf::Color::Black);
 
 	// Draw map to screen
-	_mapLoader->Draw(_window, tmx::MapLayer::All, false);
+	_mapLoader->drawLayer(_window, tmx::MapLayer::All, false);
+	_window.draw(*_player);
 
 	// Display current frame in window
 	_window.display();

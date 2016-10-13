@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>
-#include <tmx\MapLoader.h>
+#include <tmx\MapLoader.hpp>
 #include "Player.h"
 class MainGame {
 public:
