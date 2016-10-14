@@ -74,11 +74,13 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\music\through space.ogg" />
-  </ItemGroup>
-  <ItemGroup>
     <Media Include="assets\sounds\sfx_wpn_laser6.wav">
       <Filter>Resource Files</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\music\through space.ogg">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
