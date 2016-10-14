@@ -24,33 +24,15 @@ void MainGame::SetupGame() {
 	printf("Setting up game...");
 
 	/////// TEMPORARY
-	_window.setMouseCursorVisible(false);
+	//_window.setMouseCursorVisible(false);
 
-	// Load sounds
-	_shootSoundBuffer.loadFromFile("assets/sounds/sfx_wpn_laser6.wav");
-	_shootSound.setBuffer(_shootSoundBuffer);
-	_shootSound.setVolume(35);
-	_music.openFromFile("assets/music/through space.ogg");
-	_music.play();
-
-	// Load cursor
-	_cursorTexture.loadFromFile("assets/textures/Ardentryst-target2.png");
-	_cursor.setTexture(_cursorTexture);
-	_cursor.setOrigin(_cursor.getGlobalBounds().width / 2, _cursor.getGlobalBounds().height / 2);
+	_textureManager = new TextureManager();
+	_textureManager->AddTexture(PLAYER, "assets/textures/playerShip1_blue.png");
+	_textureManager->AddTexture(CURSOR, "assets/textures/Ardentryst-target2.png");
+	_textureManager->AddTexture(BACKGROUND, "assets/textures/blue.png");
 
 	// Load player
-	_playerTexture.loadFromFile("assets/textures/playerShip1_blue.png");
-	_playerTexture.setSmooth(true);
-	_player.setTexture(_playerTexture);
-	_player.setOrigin(_player.getGlobalBounds().width/2, _player.getGlobalBounds().height/2);
-	_player.setPosition(0.50f * WINDOW_WIDTH, 0.85f * WINDOW_HEIGHT);
-
-	// Load background
-	_backgroundTexture.loadFromFile("assets/textures/blue.png");
-	_backgroundTexture.setRepeated(true);
-	_background.setTextureRect(sf::IntRect{0, 0, WINDOW_WIDTH, WINDOW_HEIGHT});
-	_background.setTexture(_backgroundTexture);
-	////////////////////////////
+	_player = new Player(_textureManager->GetTexture(PLAYER));
 
 	printf("Done!\n");
 }
@@ -80,34 +62,20 @@ void MainGame::ProcessInput() {
 				_quit = true;
 				break;
 			case sf::Event::KeyPressed:
-				if (event.key.code == sf::Keyboard::Right) {
-					_player.move(10, 0);
-				} else if (event.key.code == sf::Keyboard::Left) {
-					_player.move(-10, 0);
-				} else if (event.key.code == sf::Keyboard::Up) {
-					_player.move(0, -10);
-				} else if (event.key.code == sf::Keyboard::Down) {
-					_player.move(0, 10);
-				}
+				InputManager::GetInstance().PressKey((Key)event.key.code);
 				break;
-			case sf::Event::MouseButtonPressed:
-				_shootSound.play();
+			case sf::Event::KeyReleased:
+				InputManager::GetInstance().ReleaseKey((Key)event.key.code);
 				break;
 			case sf::Event::MouseMoved:
-				sf::Vector2f playerPosition = _player.getPosition();
-				float opposite = playerPosition.x - (float)event.mouseMove.x;
-				float adjacent = playerPosition.y - (float)event.mouseMove.y;
-				float angle = atan2(adjacent, opposite) * 180/M_PI - 90;
-				_player.setRotation(angle);
-
-				_cursor.setPosition(event.mouseMove.x, event.mouseMove.y);
+				InputManager::GetInstance().MoveMouse(sf::Vector2i{ event.mouseMove.x, event.mouseMove.y });
 				break;
 		}
 	}
 }
 
 void MainGame::Update() {
-	
+	_player->Update(sf::Vector2i{WINDOW_WIDTH, WINDOW_HEIGHT});
 }
 
 void MainGame::Draw() {
@@ -115,11 +83,7 @@ void MainGame::Draw() {
 	_window.clear(sf::Color::Black);
 
 	// Draw player to window
-	// TEMPORARY
-	_window.draw(_background);
-	_window.draw(_player);
-	_window.draw(_cursor);
-	////////////////
+	_window.draw(*_player);
 
 	// Display current frame in window
 	_window.display();

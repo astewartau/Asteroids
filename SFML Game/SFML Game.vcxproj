@@ -46,13 +46,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)headers;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)\build\$(Configuration)</OutDir>
     <IntDir>$(ProjectDir)\compile\$(Configuration)</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)headers;$(ProjectDir)include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectDir)\build\$(Configuration)</OutDir>
     <IntDir>$(ProjectDir)\compile\$(Configuration)</IntDir>
@@ -95,10 +95,16 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="headers\MainGame.h" />
-    <ClInclude Include="headers\resource.h" />
+    <ClInclude Include="source\GameObject.h" />
+    <ClInclude Include="source\GameState.h" />
+    <ClInclude Include="source\InputManager.h" />
+    <ClInclude Include="include\resource.h" />
+    <ClInclude Include="source\MainGame.h" />
+    <ClInclude Include="source\Player.h" />
+    <ClInclude Include="source\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\InputManager.cpp" />
     <ClCompile Include="source\MainGame.cpp" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
