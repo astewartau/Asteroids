@@ -8,7 +8,7 @@ public:
 	}
 
 	void Init(GameObject* gameobject) {
-
+		gameobject->_sprite.setPosition(_bounds.x / 2.0f, _bounds.y / 2.0f);
 	}
 
 	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
