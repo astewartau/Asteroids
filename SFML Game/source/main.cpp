@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	// Create a new game instance
-	MainGame game;
+	GameEngine game;
 
 	// Run the game
 	game.Go();

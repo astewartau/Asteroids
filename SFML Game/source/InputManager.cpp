@@ -1,10 +1,10 @@
 #include "InputManager.h"
 
-sf::Vector2i InputManager::GetMousePosition() {
+sf::Vector2u InputManager::GetMousePosition() {
 	return _mousePosition;
 }
 
-void InputManager::MoveMouse(sf::Vector2i position) {
+void InputManager::MoveMouse(sf::Vector2u position) {
 	_mousePosition = position;
 }
 

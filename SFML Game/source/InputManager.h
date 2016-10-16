@@ -16,14 +16,14 @@ enum Mouse {
 
 class InputManager {
 public:
-	sf::Vector2i GetMousePosition();
-	void MoveMouse(sf::Vector2i position);
+	sf::Vector2u GetMousePosition();
+	void MoveMouse(sf::Vector2u position);
 	void PressKey(Key key);
 	void ReleaseKey(Key key);
 	void ReleaseAllKeys();
 	bool IsKeyPressed(Key key);
 private:
-	sf::Vector2i _mousePosition;
+	sf::Vector2u _mousePosition;
 	std::map<Key, bool> _inputStates;
 
 
@@ -37,6 +37,6 @@ public:
 	void operator=(InputManager const&) = delete;
 private:
 	InputManager() {
-		_mousePosition = sf::Vector2i{ 0,0 };
+		_mousePosition = sf::Vector2u{ 0,0 };
 	}
 };

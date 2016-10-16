@@ -1,39 +1,31 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>
+#include <vector>
+#include "GameState.h"
 
-#include "TextureManager.h"
-#include "InputManager.h"
-#include "Player.h"
-
-class MainGame {
+class GameEngine {
 public:
-	MainGame();
+	GameEngine();
 
+	void Init();
 	void Go();
-
-	void InitSystems();
 	void SetupGame();
-
 	void GameLoop();
 
-	void StartLoop();
 	void ProcessInput();
-	void Update();
+	void Update(sf::Time deltaTime);
 	void Draw();
+	void StartLoop();
 	void EndLoop();
+
+	bool Running() { return _quit; }
+	void Quit() { _quit = false; }
+
 private:
-	const std::string WINDOW_TITLE = "My game";
-	const int WINDOW_WIDTH = 800;
-	const int WINDOW_HEIGHT = 600;
-
-	bool _quit;
+	// the stack of states
 	sf::RenderWindow _window;
-
-	////// TEMPORARY
-	InputManager* _inputManager;
-	TextureManager* _textureManager;
-	Player* _player;
-	enum TextureName { PLAYER, CURSOR, BACKGROUND };
-	//////////////////////////////////////////////////
+	std::vector<State*> _states;
+	sf::Clock _clock;
+	bool _quit;
 };

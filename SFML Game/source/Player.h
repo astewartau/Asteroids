@@ -7,29 +7,42 @@
 
 class Player : public GameObject {
 public:
-	Player(sf::Texture* texture) : GameObject(texture) {
+	Player(sf::Texture* texture, sf::Vector2u playArea) : GameObject(texture, playArea) {
 		_health = 10;
+		_accelSpeed = 0.0075f;
+		_maxSpeed = 5.0f;
+		_playArea = playArea;
+		_sprite.setPosition(playArea.x / 2.0f, playArea.y / 2.0f);
 	}
-	void Update(sf::Vector2i world) {
+	void Update(sf::Time deltaTime) {
 		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_U)) {
-			Accelerate(0, -0.1);
+			if (_velocity.y > -_maxSpeed) {
+				Accelerate(sf::Vector2f{ 0.0f, -_accelSpeed * deltaTime.asMilliseconds() });
+			}
 		}
 		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_L)) {
-			Accelerate(-0.1, 0);
+			if (_velocity.x > -_maxSpeed) {
+				Accelerate(sf::Vector2f{ -_accelSpeed * deltaTime.asMilliseconds(), 0.0f });
+			}
 		}
 		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_D)) {
-			Accelerate(0, 0.1);
+			if (_velocity.y < _maxSpeed) {
+				Accelerate(sf::Vector2f{ 0.0f, _accelSpeed * deltaTime.asMilliseconds() });
+			}
 		}
 		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_R)) {
-			Accelerate(0.1, 0);
+			if (_velocity.x < _maxSpeed) {
+				Accelerate(sf::Vector2f{ _accelSpeed * deltaTime.asMilliseconds(), 0.0f });
+			}
 		}
 		LookAt(InputManager::GetInstance().GetMousePosition());
-		GameObject::Update(world);
+		GameObject::Update(deltaTime);
 	}
 private:
 	int _health;
-
-	void LookAt(sf::Vector2i location) {
+	float _maxSpeed;
+	float _accelSpeed;
+	void LookAt(sf::Vector2u location) {
 		sf::Vector2f playerPosition = _sprite.getPosition();
 		float opposite = playerPosition.x - location.x;
 		float adjacent = playerPosition.y - location.y;

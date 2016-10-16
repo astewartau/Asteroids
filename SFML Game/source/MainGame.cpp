@@ -1,94 +1,63 @@
 #include "MainGame.h"
 #include <cstdio>
 
-#define _USE_MATH_DEFINES
-#include <math.h>
-
-MainGame::MainGame() {
+GameEngine::GameEngine() {
 	_quit = false;
 }
 
-void MainGame::Go() {
-	InitSystems();
+void GameEngine::Go() {
+	Init();
 	SetupGame();
 	GameLoop();
 }
 
-void MainGame::InitSystems() {
-	printf("Creating window...");
-	_window.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE, sf::Style::Close);
-	printf("Done!\n");
+void GameEngine::Init() {
+	_window.create(sf::VideoMode(800, 600), "Game", sf::Style::Close);
 }
 
-void MainGame::SetupGame() {
-	printf("Setting up game...");
-
-	/////// TEMPORARY
-	//_window.setMouseCursorVisible(false);
-
-	_textureManager = new TextureManager();
-	_textureManager->AddTexture(PLAYER, "assets/textures/playerShip1_blue.png");
-	_textureManager->AddTexture(CURSOR, "assets/textures/Ardentryst-target2.png");
-	_textureManager->AddTexture(BACKGROUND, "assets/textures/blue.png");
-
-	// Load player
-	_player = new Player(_textureManager->GetTexture(PLAYER));
-
-	printf("Done!\n");
+void GameEngine::SetupGame() {
+	_states.push_back(new Asteroids_State(&_window));
 }
 
-void MainGame::GameLoop() {
-	printf("Success! Game running\n");
+void GameEngine::GameLoop() {
 	while (!_quit) {
 		StartLoop();
 		ProcessInput();
-		Update();
+		Update(_clock.restart());
 		Draw();
 		EndLoop();
 	}
-	printf("Game quit\n");
 }
 
-void MainGame::StartLoop() {
+void GameEngine::StartLoop() {
 
 }
 
-void MainGame::ProcessInput() {
-	sf::Event event;
-	while (_window.pollEvent(event)) {
-		switch (event.type) {
-			case sf::Event::Closed:
-				_window.close();
-				_quit = true;
-				break;
-			case sf::Event::KeyPressed:
-				InputManager::GetInstance().PressKey((Key)event.key.code);
-				break;
-			case sf::Event::KeyReleased:
-				InputManager::GetInstance().ReleaseKey((Key)event.key.code);
-				break;
-			case sf::Event::MouseMoved:
-				InputManager::GetInstance().MoveMouse(sf::Vector2i{ event.mouseMove.x, event.mouseMove.y });
-				break;
+void GameEngine::Update(sf::Time deltaTime) {
+	_states.back()->Update(deltaTime);
+}
+
+void GameEngine::Draw() {
+	_states.back()->Draw();
+}
+
+void GameEngine::EndLoop() {
+	sf::sleep(sf::Time(sf::milliseconds(5)));
+}
+
+void GameEngine::ProcessInput() {
+	sf::Event evt;
+	while (_window.pollEvent(evt)) {
+		switch (evt.type) {
+		case sf::Event::Closed:
+			_window.close();
+			_quit = true;
+			break;
+		default:
+			if (_window.hasFocus()) {
+				_states.back()->HandleEvent(evt);
+			}
+			break;
 		}
 	}
-}
-
-void MainGame::Update() {
-	_player->Update(sf::Vector2i{WINDOW_WIDTH, WINDOW_HEIGHT});
-}
-
-void MainGame::Draw() {
-	// Start by clearing the window to black
-	_window.clear(sf::Color::Black);
-
-	// Draw player to window
-	_window.draw(*_player);
-
-	// Display current frame in window
-	_window.display();
-}
-
-void MainGame::EndLoop() {
-	sf::sleep(sf::milliseconds(10));
 }
