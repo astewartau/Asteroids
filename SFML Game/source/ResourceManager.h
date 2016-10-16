@@ -3,51 +3,46 @@
 
 class ResourceManager {
 public:
-	ResourceManager() {
-
-	}
-
-	void AddTexture(int textureID, std::string filePath) {
-		if (_textureMap.find(textureID) != _textureMap.end()) {
-			printf("Texture already loaded (%s)!", filePath);
-		} else {
+	sf::Texture* GetTexture(std::string filePath) {
+		if (_textureMap.find(filePath) == _textureMap.end()) {
 			sf::Texture* texture = new sf::Texture();
 			texture->setSmooth(true);
 			if (!texture->loadFromFile(filePath)) {
 				delete texture;
 				printf("Failed to load texture (%s)!", filePath);
 			} else {
-				_textureMap[textureID] = texture;
+				_textureMap[filePath] = texture;
 			}
 		}
+		return _textureMap[filePath];
 	}
 
-	sf::Texture* GetTexture(int textureID) {
-		return _textureMap[textureID];
-	}
-
-	void AddFont(int fontID, std::string filePath) {
-		if (_fontMap.find(fontID) != _fontMap.end()) {
-			printf("Font already loaded (%s)!", filePath);
-		}
-		else {
+	sf::Font* GetFont(std::string filePath) {
+		if (_fontMap.find(filePath) == _fontMap.end()) {
 			sf::Font* font = new sf::Font();
-			
 			if (!font->loadFromFile(filePath)) {
 				delete font;
 				printf("Failed to load font (%s)!", filePath);
-			}
-			else {
-				_fontMap[fontID] = font;
+			} else {
+				_fontMap[filePath] = font;
 			}
 		}
-	}
-
-	sf::Font* GetFont(int fontID) {
-		return _fontMap[fontID];
+		return _fontMap[filePath];
 	}
 
 private:
-	std::map<int, sf::Texture*> _textureMap;
-	std::map<int, sf::Font*> _fontMap;
+	std::map<std::string, sf::Texture*> _textureMap;
+	std::map<std::string, sf::Font*> _fontMap;
+
+
+public:
+	static ResourceManager& GetInstance() {
+		static ResourceManager instance;
+		return instance;
+	}
+	ResourceManager(ResourceManager const&) = delete;
+	void operator=(ResourceManager const&) = delete;
+private:
+	ResourceManager() {
+	}
 };

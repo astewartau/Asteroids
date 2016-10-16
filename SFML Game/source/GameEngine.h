@@ -14,7 +14,7 @@ public:
 	void GameLoop();
 
 	void ProcessInput();
-	void Update(sf::Time deltaTime);
+	void Update(sf::Int32 deltaTime);
 	void Draw();
 	void StartLoop();
 	void EndLoop();

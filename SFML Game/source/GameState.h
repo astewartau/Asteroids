@@ -1,20 +1,20 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "State.h"
-#include "Player.h"
 #include "InputManager.h"
-#include "ResourceManager.h"
-
+#include "GameObject.h"
+#include "PlayerController.h"
+#include "PlayerGraphics.h"
+#include "AsteroidsPhysics.h"
 
 class GameState : public State {
 public:
 	GameState(sf::RenderWindow* window) : State(window) {
-		_textureManager = new ResourceManager();
-		_textureManager->AddTexture(PLAYER, "assets/textures/playerShip1_blue.png");
-		_textureManager->AddTexture(CURSOR, "assets/textures/Ardentryst-target2.png");
-		_textureManager->AddTexture(BACKGROUND, "assets/textures/blue.png");
-
-		_objects.push_back(new Player(_textureManager->GetTexture(PLAYER), _window->getSize()));
+		_objects.push_back(new GameObject({
+			new PlayerController(),
+			new PlayerGraphics(),
+			new AsteroidsPhysics(window->getSize())
+		}));
 	}
 
 	void HandleEvent(sf::Event evt) {
@@ -31,7 +31,7 @@ public:
 		}
 	}
 
-	void Update(sf::Time deltaTime) {
+	void Update(sf::Int32 deltaTime) {
 		for (GameObject* object : _objects) {
 			object->Update(deltaTime);
 		}
@@ -43,7 +43,5 @@ public:
 		}
 	}
 private:
-	enum TextureName { PLAYER, CURSOR, BACKGROUND };
 	std::vector<GameObject*> _objects;
-	ResourceManager* _textureManager;
 };

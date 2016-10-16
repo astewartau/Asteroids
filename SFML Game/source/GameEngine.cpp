@@ -24,7 +24,7 @@ void GameEngine::GameLoop() {
 	while (!_quit) {
 		StartLoop();
 		ProcessInput();
-		Update(_clock.restart());
+		Update(_clock.restart().asMilliseconds());
 		Draw();
 		EndLoop();
 	}
@@ -34,7 +34,7 @@ void GameEngine::StartLoop() {
 
 }
 
-void GameEngine::Update(sf::Time deltaTime) {
+void GameEngine::Update(sf::Int32 deltaTime) {
 	_states.back()->Update(deltaTime);
 }
 

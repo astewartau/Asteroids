@@ -24,7 +24,7 @@ public:
 		}
 	}
 
-	void Update(sf::Time deltaTime) {
+	void Update(sf::Int32 deltaTime) {
 
 	}
 

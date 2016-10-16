@@ -8,7 +8,7 @@ public:
 	}
 
 	virtual void HandleEvent(sf::Event evt) = 0;
-	virtual void Update(sf::Time deltaTime) = 0;
+	virtual void Update(sf::Int32 deltaTime) = 0;
 	virtual void Draw() = 0;
 protected:
 	sf::RenderWindow* _window;
