@@ -1,10 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-
-class TextureManager {
+class ResourceManager {
 public:
-	TextureManager() {
+	ResourceManager() {
 
 	}
 
@@ -27,7 +26,28 @@ public:
 		return _textureMap[textureID];
 	}
 
+	void AddFont(int fontID, std::string filePath) {
+		if (_fontMap.find(fontID) != _fontMap.end()) {
+			printf("Font already loaded (%s)!", filePath);
+		}
+		else {
+			sf::Font* font = new sf::Font();
+			
+			if (!font->loadFromFile(filePath)) {
+				delete font;
+				printf("Failed to load font (%s)!", filePath);
+			}
+			else {
+				_fontMap[fontID] = font;
+			}
+		}
+	}
+
+	sf::Font* GetFont(int fontID) {
+		return _fontMap[fontID];
+	}
 
 private:
 	std::map<int, sf::Texture*> _textureMap;
+	std::map<int, sf::Font*> _fontMap;
 };

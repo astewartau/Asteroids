@@ -97,16 +97,17 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
   <ItemGroup>
     <ClInclude Include="source\GameObject.h" />
     <ClInclude Include="source\GameState.h" />
+    <ClInclude Include="source\MenuState.h" />
     <ClInclude Include="source\State.h" />
     <ClInclude Include="source\InputManager.h" />
     <ClInclude Include="include\resource.h" />
-    <ClInclude Include="source\MainGame.h" />
+    <ClInclude Include="source\GameEngine.h" />
     <ClInclude Include="source\Player.h" />
-    <ClInclude Include="source\TextureManager.h" />
+    <ClInclude Include="source\ResourceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\InputManager.cpp" />
-    <ClCompile Include="source\MainGame.cpp" />
+    <ClCompile Include="source\GameEngine.cpp" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +126,9 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\sfx_wpn_laser6.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\FreeMono.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

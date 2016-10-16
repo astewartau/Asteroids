@@ -1,4 +1,5 @@
-#include "MainGame.h"
+#include "GameEngine.h"
+#include "GameState.h"
 #include <cstdio>
 
 GameEngine::GameEngine() {
@@ -16,7 +17,7 @@ void GameEngine::Init() {
 }
 
 void GameEngine::SetupGame() {
-	_states.push_back(new Asteroids_State(&_window));
+	_states.push_back(new GameState(&_window));
 }
 
 void GameEngine::GameLoop() {
@@ -38,7 +39,9 @@ void GameEngine::Update(sf::Time deltaTime) {
 }
 
 void GameEngine::Draw() {
+	_window.clear();
 	_states.back()->Draw();
+	_window.display();
 }
 
 void GameEngine::EndLoop() {
