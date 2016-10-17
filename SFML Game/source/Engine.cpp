@@ -1,6 +1,5 @@
 #include "Engine.h"
 #include "GameState.h"
-#include <cstdio>
 
 Engine::Engine() { }
 

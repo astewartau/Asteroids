@@ -1,7 +1,5 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include <SFML\Audio.hpp>
-#include <vector>
 #include "State.h"
 
 class Engine {

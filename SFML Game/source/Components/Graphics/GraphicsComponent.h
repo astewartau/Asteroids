@@ -1,5 +1,6 @@
 #pragma once
-#include "Component.h"
+#include "../Component.h"
+#include "../../ResourceManager.h"
 
 class GraphicsComponent : public Component {
 public:

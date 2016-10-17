@@ -95,28 +95,32 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\AsteroidsPhysics.h" />
-    <ClInclude Include="source\Component.h" />
-    <ClInclude Include="source\Controller.h" />
+    <ClInclude Include="source\Components\Controller\AsteroidController.h" />
+    <ClInclude Include="source\Components\Controller\BulletController.h" />
+    <ClInclude Include="source\Components\Graphics\AsteroidGraphics.h" />
+    <ClInclude Include="source\Components\Graphics\BulletGraphics.h" />
+    <ClInclude Include="source\Components\Physics\AsteroidsPhysics.h" />
+    <ClInclude Include="source\Components\Component.h" />
+    <ClInclude Include="source\Components\Controller\Controller.h" />
     <ClInclude Include="source\GameObject.h" />
     <ClInclude Include="source\GameState.h" />
-    <ClInclude Include="source\GraphicsComponent.h" />
+    <ClInclude Include="source\Components\Graphics\GraphicsComponent.h" />
     <ClInclude Include="source\MenuState.h" />
-    <ClInclude Include="source\PhysicsComponent.h" />
-    <ClInclude Include="source\PlayerController.h" />
-    <ClInclude Include="source\PlayerGraphics.h" />
+    <ClInclude Include="source\Components\Physics\PhysicsComponent.h" />
+    <ClInclude Include="source\Components\Controller\PlayerController.h" />
+    <ClInclude Include="source\Components\Graphics\PlayerGraphics.h" />
     <ClInclude Include="source\State.h" />
     <ClInclude Include="source\InputManager.h" />
     <ClInclude Include="include\resource.h" />
     <ClInclude Include="source\Engine.h" />
     <ClInclude Include="source\ResourceManager.h" />
+    <ClInclude Include="source\Structs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GameObject.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
     <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\PlayerController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\Ardentryst-target2.png" />

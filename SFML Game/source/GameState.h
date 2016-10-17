@@ -1,20 +1,39 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "Structs.h"
 #include "State.h"
 #include "InputManager.h"
 #include "GameObject.h"
-#include "PlayerController.h"
-#include "PlayerGraphics.h"
-#include "AsteroidsPhysics.h"
+#include "Components\Controller\PlayerController.h"
+#include "Components\Controller\AsteroidController.h"
+#include "Components\Graphics\PlayerGraphics.h"
+#include "Components\Graphics\AsteroidGraphics.h"
+#include "Components\Physics\AsteroidsPhysics.h"
+#include "Components\Controller\BulletController.h"
+#include "Components\Graphics\BulletGraphics.h"
+
+
 
 class GameState : public State {
 public:
 	GameState(sf::RenderWindow* window) : State(window) {
+		srand(time(NULL));
+
 		_objects.push_back(new GameObject({
 			new PlayerController(),
 			new PlayerGraphics(),
-			new AsteroidsPhysics(window->getSize())
+			new AsteroidsPhysics(_window->getSize(), sf::Vector2f{ _window->getSize().x / 2.0f, 
+																  _window->getSize().y / 2.0f })
 		}));
+
+		for (int i = 0; i < 5; i++) {
+			_objects.push_back(new GameObject({
+				new AsteroidGraphics(),
+				new AsteroidsPhysics(_window->getSize()),
+				new AsteroidController()
+			}));
+		}
+		
 	}
 
 	void HandleEvents() {

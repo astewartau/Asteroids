@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "Component.h"
+#include "Components\Component.h"
 
 class Component;
 class GameObject : public sf::Drawable {
