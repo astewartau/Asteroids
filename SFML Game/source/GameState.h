@@ -17,17 +17,23 @@ public:
 		}));
 	}
 
-	void HandleEvent(sf::Event evt) {
-		switch (evt.type) {
-		case sf::Event::EventType::KeyPressed:
-			InputManager::GetInstance().PressKey((Key)evt.key.code);
-			break;
-		case sf::Event::EventType::KeyReleased:
-			InputManager::GetInstance().ReleaseKey((Key)evt.key.code);
-			break;
-		case sf::Event::EventType::MouseMoved:
-			InputManager::GetInstance().MoveMouse(sf::Vector2u{ (unsigned int)evt.mouseMove.x, (unsigned int)evt.mouseMove.y });
-			break;
+	void HandleEvents() {
+		sf::Event event;
+		while (_window->pollEvent(event)) {
+			switch (event.type) {
+			case sf::Event::EventType::Closed:
+				_nextState = nullptr;
+				break;
+			case sf::Event::EventType::KeyPressed:
+				InputManager::GetInstance().PressKey((Key)event.key.code);
+				break;
+			case sf::Event::EventType::KeyReleased:
+				InputManager::GetInstance().ReleaseKey((Key)event.key.code);
+				break;
+			case sf::Event::EventType::MouseMoved:
+				InputManager::GetInstance().MoveMouse(sf::Vector2u{ (unsigned int)event.mouseMove.x, (unsigned int)event.mouseMove.y });
+				break;
+			}
 		}
 	}
 
@@ -37,7 +43,7 @@ public:
 		}
 	}
 
-	void Draw() {
+	void DrawState() {
 		for (GameObject* object : _objects) {
 			_window->draw(*object);
 		}

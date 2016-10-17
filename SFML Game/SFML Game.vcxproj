@@ -108,13 +108,13 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClInclude Include="source\State.h" />
     <ClInclude Include="source\InputManager.h" />
     <ClInclude Include="include\resource.h" />
-    <ClInclude Include="source\GameEngine.h" />
+    <ClInclude Include="source\Engine.h" />
     <ClInclude Include="source\ResourceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\GameObject.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
-    <ClCompile Include="source\GameEngine.cpp" />
+    <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\PlayerController.cpp" />
   </ItemGroup>

@@ -1,11 +1,11 @@
-#include "GameEngine.h"
+#include "Engine.h"
 #include <iostream>
 
 using namespace std;
 
 int main() {
 	// Create a new game instance
-	GameEngine game;
+	Engine game;
 
 	// Run the game
 	game.Go();
