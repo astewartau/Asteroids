@@ -7,23 +7,27 @@
 
 class PlayerController : public Controller {
 public:
-	PlayerController() {
+	PlayerController(std::vector<GameObject*>* objects) {
 		_speed = 0.01f;
+		_objects = objects;
 	}
 	void Init(GameObject* gameobject) {}
 
 	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
-		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_L)) {
+		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_LEFT)) {
 			gameobject->_velocity += sf::Vector2f{ -_speed * deltaTime, 0.0f };
 		}
-		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_R)) {
+		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_RIGHT)) {
 			gameobject->_velocity += sf::Vector2f{ _speed * deltaTime, 0.0f };
 		}
-		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_U)) {
+		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_UP)) {
 			gameobject->_velocity += sf::Vector2f{ 0.0f, -_speed * deltaTime };
 		}
-		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_D)) {
+		if (InputManager::GetInstance().IsKeyPressed(Key::THRUST_DOWN)) {
 			gameobject->_velocity += sf::Vector2f{ 0.0f, _speed * deltaTime };
+		}
+		if (InputManager::GetInstance().IsMousePressed((MouseButton)FIRE)) {
+			
 		}
 
 		sf::Vector2f playerPosition = gameobject->_sprite.getPosition();
@@ -35,5 +39,5 @@ public:
 
 private:
 	float _speed;
-
+	std::vector<GameObject*>* _objects;
 };

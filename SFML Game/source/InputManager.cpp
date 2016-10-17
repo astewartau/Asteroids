@@ -8,23 +8,38 @@ void InputManager::MoveMouse(sf::Vector2u position) {
 	_mousePosition = position;
 }
 
+void InputManager::PressMouse(MouseButton button) {
+	_mouseStates[button] = true;
+}
+
+void InputManager::ReleaseMouse(MouseButton button) {
+	_mouseStates[button] = false;
+}
+
 void InputManager::PressKey(Key key) {
-	_inputStates[key] = true;
+	_keyStates[key] = true;
 }
 
 void InputManager::ReleaseKey(Key key) {
-	_inputStates[key] = false;
+	_keyStates[key] = false;
 }
 
 void InputManager::ReleaseAllKeys() {
-	for (auto it = _inputStates.begin(); it != _inputStates.end(); ++it) {
+	for (auto it = _keyStates.begin(); it != _keyStates.end(); ++it) {
 		it->second = false;
 	}
 }
 
 bool InputManager::IsKeyPressed(Key key) {
-	if (_inputStates.find(key) == _inputStates.end()) {
-		_inputStates[key] = false;
+	if (_keyStates.find(key) == _keyStates.end()) {
+		_keyStates[key] = false;
 	}
-	return _inputStates[key];
+	return _keyStates[key];
+}
+
+bool InputManager::IsMousePressed(MouseButton button) {
+	if (_mouseStates.find(button) == _mouseStates.end()) {
+		_mouseStates[button] = false;
+	}
+	return _mouseStates[button];
 }

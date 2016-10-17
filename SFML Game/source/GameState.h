@@ -9,8 +9,7 @@
 #include "Components\Graphics\PlayerGraphics.h"
 #include "Components\Graphics\AsteroidGraphics.h"
 #include "Components\Physics\AsteroidsPhysics.h"
-#include "Components\Controller\BulletController.h"
-#include "Components\Graphics\BulletGraphics.h"
+
 
 
 
@@ -20,7 +19,7 @@ public:
 		srand(time(NULL));
 
 		_objects.push_back(new GameObject({
-			new PlayerController(),
+			new PlayerController(&_objects),
 			new PlayerGraphics(),
 			new AsteroidsPhysics(_window->getSize(), sf::Vector2f{ _window->getSize().x / 2.0f, 
 																  _window->getSize().y / 2.0f })
@@ -51,6 +50,12 @@ public:
 				break;
 			case sf::Event::EventType::MouseMoved:
 				InputManager::GetInstance().MoveMouse(sf::Vector2u{ (unsigned int)event.mouseMove.x, (unsigned int)event.mouseMove.y });
+				break;
+			case sf::Event::EventType::MouseButtonPressed:
+				InputManager::GetInstance().PressMouse((MouseButton)event.mouseButton.button);
+				break;
+			case sf::Event::EventType::MouseButtonReleased:
+				InputManager::GetInstance().ReleaseMouse((MouseButton)event.mouseButton.button);
 				break;
 			}
 		}
