@@ -17,7 +17,7 @@ public:
 		position.SetMagnitude(hypot(_bounds.x / 2.0f, _bounds.y / 2.0f));
 		position.SetDirection(rand() % 360 + 1);
 
-		_startPosition = {position.GetX(), position.GetY()};
+		_startPosition = {bounds.x/2.0f + position.GetX(), bounds.y/2.0f + position.GetY()};
 	}
 
 	void Init(GameObject* gameobject) {
