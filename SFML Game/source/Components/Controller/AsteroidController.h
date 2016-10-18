@@ -5,8 +5,8 @@
 class AsteroidController : public Controller {
 public:
 	AsteroidController() {
-		_moveSpeed = 1;
-		_rotationSpeed = 0.1f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (2.0f - 0.1f)));
+		_moveSpeed = 0.15f;
+		_rotationSpeed = 0.02f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (0.15f - 0.02f)));
 	}
 
 	void Init(GameObject* gameobject) {
@@ -17,7 +17,7 @@ public:
 	}
 
 	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
-		gameobject->_sprite.rotate(_rotationSpeed);
+		gameobject->_sprite.rotate(_rotationSpeed * deltaTime);
 	}
 
 private:

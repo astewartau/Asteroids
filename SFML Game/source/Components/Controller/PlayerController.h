@@ -7,9 +7,8 @@
 
 class PlayerController : public Controller {
 public:
-	PlayerController(std::vector<GameObject*>* objects) {
-		_speed = 0.01f;
-		_objects = objects;
+	PlayerController() {
+		_speed = 0.0025f;
 	}
 	void Init(GameObject* gameobject) {}
 
@@ -39,5 +38,4 @@ public:
 
 private:
 	float _speed;
-	std::vector<GameObject*>* _objects;
 };

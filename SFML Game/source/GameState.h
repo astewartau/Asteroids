@@ -19,7 +19,7 @@ public:
 		srand(time(NULL));
 
 		_objects.push_back(new GameObject({
-			new PlayerController(&_objects),
+			new PlayerController(),
 			new PlayerGraphics(),
 			new AsteroidsPhysics(_window->getSize(), sf::Vector2f{ _window->getSize().x / 2.0f, 
 																  _window->getSize().y / 2.0f })

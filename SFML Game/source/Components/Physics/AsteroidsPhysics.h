@@ -25,7 +25,7 @@ public:
 	}
 
 	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
-		gameobject->_sprite.move(gameobject->_velocity);
+		gameobject->_sprite.move(gameobject->_velocity.x * deltaTime, gameobject->_velocity.y * deltaTime);
 
 		auto spritePosition = gameobject->_sprite.getPosition();
 		auto spriteSize = gameobject->_sprite.getLocalBounds();
