@@ -1,6 +1,7 @@
 #pragma once
 #include "ControllerComponent.h"
 #include "../../Structs.h"
+#include "../../Helpers.h"
 
 class AsteroidController : public ControllerComponent {
 public:
@@ -12,7 +13,7 @@ public:
 
 	void Init(GameObject* gameobject) {
 		Vec3<float> velocity;
-		velocity.SetDirection(rand() % 360 + 1);
+		velocity.SetDirection((float)RandInt(1,360));
 		velocity.SetMagnitude(_moveSpeed);
 		gameobject->_velocity = sf::Vector2f{ velocity.GetX(), velocity.GetY() };
 	}

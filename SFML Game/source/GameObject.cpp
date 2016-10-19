@@ -17,3 +17,9 @@ void GameObject::Update(sf::Int32 deltaTime) {
 void GameObject::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	target.draw(_sprite);
 }
+
+GameObject::~GameObject() {
+	for (size_t i = 0; i < _components.size(); i++) {
+		delete _components[i];
+	}
+}

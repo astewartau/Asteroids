@@ -10,7 +10,7 @@
 #include "Components\Spawner\AsteroidSpawner.h"
 
 GameState::GameState(sf::RenderWindow* window) : State(window) {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 
 	GameObject* player = new GameObject({
 		new PlayerController(&_inputManager),
@@ -65,11 +65,11 @@ void GameState::HandleEvents() {
 }
 
 void GameState::Update(sf::Int32 deltaTime) {
-	for (int i = 0; i < _objects.size(); i++) {
+	for (size_t i = 0; i < _objects.size(); i++) {
 		_objects[i]->Update(deltaTime);
 	}
 
-	for (int i = 0; i < _deleteQueue.size(); i++) {
+	for (size_t i = 0; i < _deleteQueue.size(); i++) {
 		_objects.erase(std::remove(_objects.begin(), _objects.end(), _deleteQueue[i]), _objects.end());
 		delete _deleteQueue[i];
 	}
@@ -83,11 +83,11 @@ void GameState::DrawState() {
 }
 
 GameState::~GameState() {
-	for (int i = 0; i < _objects.size(); i++) {
+	for (size_t i = 0; i < _objects.size(); i++) {
 		delete _objects[i];
 	}
 
-	for (int i = 0; i < _deleteQueue.size(); i++) {
+	for (size_t i = 0; i < _deleteQueue.size(); i++) {
 		delete _deleteQueue[i];
 	}
 

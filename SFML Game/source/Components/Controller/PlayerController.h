@@ -43,7 +43,7 @@ public:
 		sf::Vector2f playerPosition = gameobject->_sprite.getPosition();
 		float opposite = playerPosition.x - _inputManager->GetMousePosition().x;
 		float adjacent = playerPosition.y - _inputManager->GetMousePosition().y;
-		float angle = atan2(adjacent, opposite) * 180 / M_PI - 90;
+		float angle = atan2(adjacent, opposite) * (float)(180 / M_PI) - 90.0f;
 		gameobject->_sprite.setRotation(angle);
 	}
 

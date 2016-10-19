@@ -20,7 +20,7 @@ public:
 			texture->setSmooth(true);
 			if (!texture->loadFromFile(filePath)) {
 				delete texture;
-				printf("Failed to load texture (%s)!", filePath);
+				printf("Failed to load texture (%s)!", filePath.c_str());
 			} else {
 				_textureMap[filePath] = texture;
 			}
@@ -33,7 +33,7 @@ public:
 			sf::Font* font = new sf::Font();
 			if (!font->loadFromFile(filePath)) {
 				delete font;
-				printf("Failed to load font (%s)!", filePath);
+				printf("Failed to load font (%s)!", filePath.c_str());
 			} else {
 				_fontMap[filePath] = font;
 			}

@@ -36,8 +36,8 @@ struct Vec3 {
 	}
 private:
 	void UpdateXY() {
-		x = magnitude * cos(direction * M_PI / 180);
-		y = magnitude * sin(direction * M_PI / 180);
+		x = (T)(magnitude * cos(direction * M_PI / 180));
+		y = (T)(magnitude * sin(direction * M_PI / 180));
 	}
 	void UpdateMagDir() {
 		direction = atan2(y, x);
