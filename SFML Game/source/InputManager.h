@@ -16,6 +16,7 @@ enum MouseButton {
 
 class InputManager {
 public:
+	InputManager() {}
 	sf::Vector2u GetMousePosition();
 	void MoveMouse(sf::Vector2u position);
 	void PressMouse(MouseButton button);
@@ -29,17 +30,4 @@ private:
 	sf::Vector2u _mousePosition;
 	std::map<Key, bool> _keyStates;
 	std::map<MouseButton, bool> _mouseStates;
-
-// SINGLETON
-public:
-	static InputManager& GetInstance() {
-		static InputManager instance;
-		return instance;
-	}
-	InputManager(InputManager const&) = delete;
-	void operator=(InputManager const&) = delete;
-private:
-	InputManager() {
-		_mousePosition = sf::Vector2u{ 0,0 };
-	}
 };

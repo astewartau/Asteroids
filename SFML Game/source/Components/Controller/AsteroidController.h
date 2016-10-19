@@ -8,6 +8,7 @@ public:
 		_moveSpeed = 0.15f;
 		_rotationSpeed = 0.02f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (0.15f - 0.02f)));
 	}
+	~AsteroidController() {}
 
 	void Init(GameObject* gameobject) {
 		Vec3<float> velocity;

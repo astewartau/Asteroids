@@ -6,6 +6,12 @@ class Component;
 class GameObject : public sf::Drawable {
 public:
 	GameObject(std::vector<Component*> components);
+	~GameObject() {
+		for (int i = 0; i < _components.size(); i++) {
+			delete _components[i];
+		}
+	}
+
 	void Update(sf::Int32 deltaTime);
 
 	sf::Sprite _sprite;

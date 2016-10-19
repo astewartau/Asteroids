@@ -3,6 +3,17 @@
 
 class ResourceManager {
 public:
+	ResourceManager() {}
+	~ResourceManager() {
+		for (std::map<std::string, sf::Texture*>::iterator itr = _textureMap.begin(); itr != _textureMap.end(); itr++) {
+			delete itr->second;
+		}
+
+		for (std::map<std::string, sf::Font*>::iterator itr = _fontMap.begin(); itr != _fontMap.end(); itr++) {
+			delete itr->second;
+		}
+	}
+
 	sf::Texture* GetTexture(std::string filePath) {
 		if (_textureMap.find(filePath) == _textureMap.end()) {
 			sf::Texture* texture = new sf::Texture();
@@ -33,16 +44,4 @@ public:
 private:
 	std::map<std::string, sf::Texture*> _textureMap;
 	std::map<std::string, sf::Font*> _fontMap;
-
-
-public:
-	static ResourceManager& GetInstance() {
-		static ResourceManager instance;
-		return instance;
-	}
-	ResourceManager(ResourceManager const&) = delete;
-	void operator=(ResourceManager const&) = delete;
-private:
-	ResourceManager() {
-	}
 };

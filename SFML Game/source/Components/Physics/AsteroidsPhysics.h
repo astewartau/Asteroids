@@ -1,27 +1,15 @@
 #pragma once
 #include "PhysicsComponent.h"
+#include "../../Structs.h"
 
 class AsteroidsPhysics : public PhysicsComponent {
 public:
-	// Setup an Asteroids physics object at the given location
-	AsteroidsPhysics(sf::Vector2u bounds, sf::Vector2f startPosition) {
-		_bounds = bounds;
-		_startPosition = startPosition;
-	}
-
-	// Setup an Asteroids physics object at a random location outside the screen
+	// Setup an Asteroids physics object
 	AsteroidsPhysics(sf::Vector2u bounds) {
 		_bounds = bounds;
-
-		Vec3<float> position;
-		position.SetMagnitude(hypot(_bounds.x / 2.0f, _bounds.y / 2.0f));
-		position.SetDirection(rand() % 360 + 1);
-
-		_startPosition = {bounds.x/2.0f + position.GetX(), bounds.y/2.0f + position.GetY()};
 	}
 
 	void Init(GameObject* gameobject) {
-		gameobject->_sprite.setPosition(_startPosition);
 	}
 
 	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
@@ -44,5 +32,4 @@ public:
 
 private:
 	sf::Vector2u _bounds;
-	sf::Vector2f _startPosition;
 };

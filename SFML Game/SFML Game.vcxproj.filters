@@ -75,6 +75,18 @@
     <ClInclude Include="source\Components\Controller\BulletController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Components\Spawner\SpawnerComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Spawner\AsteroidSpawner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Destroyer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -87,6 +99,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Components\Spawner\AsteroidSpawner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

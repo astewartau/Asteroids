@@ -1,8 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "Engine.h"
 
-class Engine;
 class State {
 public:
 	State* Run() {
@@ -13,6 +11,8 @@ public:
 		EndLoop();
 		return _nextState;
 	}
+
+	virtual ~State() {}
 protected:
 	State(sf::RenderWindow* window) {
 		_window = window;

@@ -7,6 +7,7 @@ public:
 	BulletController() {
 		_speed = 10;
 	}
+	~BulletController() { }
 
 	void Init(GameObject* gameobject) {
 		Vec3<float> velocity;
