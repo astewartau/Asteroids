@@ -17,7 +17,7 @@ GameState::GameState(sf::RenderWindow* window) : State(window) {
 		new PlayerGraphics(&_resourceManager),
 		new AsteroidsPhysics(GetBounds())
 	});
-	player->_sprite.setPosition(200, 200);
+	player->_sprite.setPosition(_window->getSize().x * 0.5f, _window->getSize().y * 0.75f);
 	_objects.push_back(player);
 
 	_objects.push_back(new GameObject({

@@ -7,7 +7,7 @@ enum Key {
 	D = sf::Keyboard::Key::D,
 	W = sf::Keyboard::Key::W,
 	S = sf::Keyboard::Key::S,
-	ACTION = sf::Keyboard::Key::Return
+	RETURN = sf::Keyboard::Key::Return
 };
 
 enum MouseButton {

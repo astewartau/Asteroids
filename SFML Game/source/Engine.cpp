@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include "GameState.h"
+#include "MenuState.h"
 
 Engine::Engine() { }
 
@@ -15,7 +15,7 @@ void Engine::Init() {
 }
 
 void Engine::SetupGame() {
-	_currentState = new GameState(&_window);
+	_currentState = new MenuState(&_window);
 }
 
 void Engine::GameLoop() {
