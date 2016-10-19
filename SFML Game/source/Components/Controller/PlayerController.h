@@ -1,14 +1,17 @@
 #pragma once
+#include "ControllerComponent.h"
+
 #include "../../InputManager.h"
-#include "Controller.h"
 #include "../../GameState.h"
+
 #include "../Graphics/BulletGraphics.h"
 #include "../Physics/AsteroidsPhysics.h"
 #include "../Destroyer.h"
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-class PlayerController : public Controller {
+class PlayerController : public ControllerComponent {
 public:
 	PlayerController(InputManager* inputManager) {
 		_inputManager = inputManager;

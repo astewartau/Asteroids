@@ -9,9 +9,7 @@ public:
 		_state = state;
 	}
 
-	~Destroyer() {
-		printf("Destroyer component destroyed\n");
-	}
+	~Destroyer() { }
 
 	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
 		if (_clock.getElapsedTime() > _life) {

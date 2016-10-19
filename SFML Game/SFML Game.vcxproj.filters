@@ -42,9 +42,6 @@
     <ClInclude Include="source\Components\Physics\AsteroidsPhysics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Components\Controller\Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\Components\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -85,6 +82,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="source\Components\Destroyer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Controller\ControllerComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

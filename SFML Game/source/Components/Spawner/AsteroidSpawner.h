@@ -1,6 +1,6 @@
 #pragma once
 #include "SpawnerComponent.h"
-#include "..\..\GameState.h"
+#include "../../GameState.h"
 
 class AsteroidSpawner : public SpawnerComponent {
 public:

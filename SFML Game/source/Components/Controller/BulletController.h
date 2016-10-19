@@ -1,8 +1,8 @@
 #pragma once
-#include "Controller.h"
+#include "ControllerComponent.h"
 #include "../../Structs.h"
 
-class BulletController : public Controller {
+class BulletController : public ControllerComponent {
 public:
 	BulletController() {
 		_speed = 10;

@@ -1,8 +1,8 @@
 #pragma once
-#include "Controller.h"
+#include "ControllerComponent.h"
 #include "../../Structs.h"
 
-class AsteroidController : public Controller {
+class AsteroidController : public ControllerComponent {
 public:
 	AsteroidController() {
 		_moveSpeed = 0.15f;

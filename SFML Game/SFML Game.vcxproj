@@ -102,7 +102,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClInclude Include="source\Components\Graphics\BulletGraphics.h" />
     <ClInclude Include="source\Components\Physics\AsteroidsPhysics.h" />
     <ClInclude Include="source\Components\Component.h" />
-    <ClInclude Include="source\Components\Controller\Controller.h" />
+    <ClInclude Include="source\Components\Controller\ControllerComponent.h" />
     <ClInclude Include="source\Components\Spawner\AsteroidSpawner.h" />
     <ClInclude Include="source\Components\Spawner\SpawnerComponent.h" />
     <ClInclude Include="source\GameObject.h" />
