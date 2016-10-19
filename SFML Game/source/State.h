@@ -36,6 +36,6 @@ private:
 		_window->display();
 	}
 	void EndLoop() {
-		sf::sleep(sf::milliseconds(10));
+		sf::sleep(sf::milliseconds(5));
 	}
 };

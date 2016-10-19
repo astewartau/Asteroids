@@ -3,15 +3,15 @@
 #include <SFML\Window.hpp>
 
 enum Key {
-	THRUST_LEFT = sf::Keyboard::Key::A,
-	THRUST_RIGHT = sf::Keyboard::Key::D,
-	THRUST_UP = sf::Keyboard::Key::W,
-	THRUST_DOWN = sf::Keyboard::Key::S,
+	A = sf::Keyboard::Key::A,
+	D = sf::Keyboard::Key::D,
+	W = sf::Keyboard::Key::W,
+	S = sf::Keyboard::Key::S,
 	ACTION = sf::Keyboard::Key::Return
 };
 
 enum MouseButton {
-	FIRE = sf::Mouse::Button::Left
+	LEFT = sf::Mouse::Button::Left
 };
 
 class InputManager {
@@ -26,6 +26,7 @@ public:
 	void ReleaseAllKeys();
 	bool IsKeyPressed(Key key);
 	bool IsMousePressed(MouseButton button);
+	bool* GetKeyRef(Key key);
 private:
 	sf::Vector2u _mousePosition;
 	std::map<Key, bool> _keyStates;

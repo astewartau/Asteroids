@@ -15,19 +15,25 @@ public:
 		_speed = 0.0025f;
 	}
 	~PlayerController() {}
-	void Init(GameObject* gameobject) {}
+
+	void Init(GameObject* gameobject) {
+		_thrustLeft = _inputManager->GetKeyRef(Key::A);
+		_thrustRight = _inputManager->GetKeyRef(Key::D);
+		_thrustUp = _inputManager->GetKeyRef(Key::W);
+		_thrustDown = _inputManager->GetKeyRef(Key::S);
+	}
 
 	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
-		if (_inputManager->IsKeyPressed(Key::THRUST_LEFT)) {
+		if (*_thrustLeft) {
 			gameobject->_velocity += sf::Vector2f{ -_speed * deltaTime, 0.0f };
 		}
-		if (_inputManager->IsKeyPressed(Key::THRUST_RIGHT)) {
+		if (*_thrustRight) {
 			gameobject->_velocity += sf::Vector2f{ _speed * deltaTime, 0.0f };
 		}
-		if (_inputManager->IsKeyPressed(Key::THRUST_UP)) {
+		if (*_thrustUp) {
 			gameobject->_velocity += sf::Vector2f{ 0.0f, -_speed * deltaTime };
 		}
-		if (_inputManager->IsKeyPressed(Key::THRUST_DOWN)) {
+		if (*_thrustDown) {
 			gameobject->_velocity += sf::Vector2f{ 0.0f, _speed * deltaTime };
 		}
 
@@ -39,6 +45,8 @@ public:
 	}
 
 private:
+	bool *_thrustLeft, *_thrustRight, *_thrustUp, *_thrustDown;
+
 	InputManager* _inputManager;
 	float _speed;
 };

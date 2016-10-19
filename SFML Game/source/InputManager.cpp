@@ -43,3 +43,10 @@ bool InputManager::IsMousePressed(MouseButton button) {
 	}
 	return _mouseStates[button];
 }
+
+bool* InputManager::GetKeyRef(Key key) {
+	if (_keyStates.find(key) == _keyStates.end()) {
+		return &_keyStates[key];
+	}
+	return nullptr;
+}
