@@ -87,6 +87,9 @@
     <ClInclude Include="source\Components\Controller\ControllerComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Components\Graphics\BackgroundGraphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -125,6 +128,12 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\textures\tochLit.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\laserBlue01.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\textures\meteorGrey_big1.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

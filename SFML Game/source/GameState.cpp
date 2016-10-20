@@ -5,12 +5,18 @@
 #include "Components\Controller\PlayerController.h"
 #include "Components\Graphics\PlayerGraphics.h"
 #include "Components\Physics\AsteroidsPhysics.h"
+#include "Components\Graphics\BackgroundGraphics.h"
 #include "Components\Graphics\AsteroidGraphics.h"
 #include "Components\Controller\AsteroidController.h"
 #include "Components\Spawner\AsteroidSpawner.h"
 
 GameState::GameState(sf::RenderWindow* window) : State(window) {
 	srand((unsigned int)time(NULL));
+
+	GameObject* background = new GameObject({
+		new BackgroundGraphics(&_resourceManager, window->getSize())
+	});
+	_objects.push_back(background);
 
 	GameObject* player = new GameObject({
 		new PlayerController(&_inputManager),

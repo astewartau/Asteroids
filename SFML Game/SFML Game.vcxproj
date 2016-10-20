@@ -99,6 +99,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClInclude Include="source\Components\Controller\BulletController.h" />
     <ClInclude Include="source\Components\Destroyer.h" />
     <ClInclude Include="source\Components\Graphics\AsteroidGraphics.h" />
+    <ClInclude Include="source\Components\Graphics\BackgroundGraphics.h" />
     <ClInclude Include="source\Components\Graphics\BulletGraphics.h" />
     <ClInclude Include="source\Components\Physics\AsteroidsPhysics.h" />
     <ClInclude Include="source\Components\Component.h" />
@@ -132,6 +133,8 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <Image Include="assets\textures\Ardentryst-target2.png" />
     <Image Include="assets\textures\blue.png" />
     <Image Include="assets\textures\darkPurple.png" />
+    <Image Include="assets\textures\laserBlue01.png" />
+    <Image Include="assets\textures\meteorGrey_big1.png" />
     <Image Include="assets\textures\playerShip1_blue.png" />
     <Image Include="assets\textures\tochLit.ico" />
     <Image Include="assets\textures\tochLit.png" />
