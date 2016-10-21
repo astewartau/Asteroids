@@ -14,10 +14,9 @@ public:
 		srand((unsigned int)time(NULL));
 
 		// Create background
-		GameObject* background = new GameObject({
+		AddObject(new GameObject({
 			new BackgroundGraphics(&_resourceManager, _window->getSize())
-		});
-		AddObject(background);
+		}));
 
 		// Create player
 		GameObject* player = new GameObject({
