@@ -63,6 +63,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -81,6 +82,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -95,8 +97,8 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\States\AsteroidsGame.h" />
     <ClInclude Include="source\Components\Controller\AsteroidController.h" />
-    <ClInclude Include="source\Components\Controller\BulletController.h" />
     <ClInclude Include="source\Components\Destroyer.h" />
     <ClInclude Include="source\Components\Graphics\AsteroidGraphics.h" />
     <ClInclude Include="source\Components\Graphics\BackgroundGraphics.h" />
@@ -105,27 +107,28 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClInclude Include="source\Components\Component.h" />
     <ClInclude Include="source\Components\Controller\ControllerComponent.h" />
     <ClInclude Include="source\Components\Spawner\AsteroidSpawner.h" />
+    <ClInclude Include="source\Components\Spawner\BulletSpawner.h" />
     <ClInclude Include="source\Components\Spawner\SpawnerComponent.h" />
-    <ClInclude Include="source\GameObject.h" />
-    <ClInclude Include="source\GameState.h" />
+    <ClInclude Include="source\Components\GameObject.h" />
+    <ClInclude Include="source\States\GameState.h" />
     <ClInclude Include="source\Components\Graphics\GraphicsComponent.h" />
-    <ClInclude Include="source\Helpers.h" />
-    <ClInclude Include="source\MenuState.h" />
+    <ClInclude Include="source\Helpers\Methods.h" />
+    <ClInclude Include="source\States\MenuState.h" />
     <ClInclude Include="source\Components\Physics\PhysicsComponent.h" />
     <ClInclude Include="source\Components\Controller\PlayerController.h" />
     <ClInclude Include="source\Components\Graphics\PlayerGraphics.h" />
-    <ClInclude Include="source\State.h" />
-    <ClInclude Include="source\InputManager.h" />
+    <ClInclude Include="source\States\State.h" />
+    <ClInclude Include="source\Managers\InputManager.h" />
     <ClInclude Include="include\resource.h" />
     <ClInclude Include="source\Engine.h" />
-    <ClInclude Include="source\ResourceManager.h" />
-    <ClInclude Include="source\Structs.h" />
+    <ClInclude Include="source\Managers\ResourceManager.h" />
+    <ClInclude Include="source\Helpers\Structs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Components\Spawner\AsteroidSpawner.cpp" />
-    <ClCompile Include="source\GameObject.cpp" />
-    <ClCompile Include="source\GameState.cpp" />
-    <ClCompile Include="source\InputManager.cpp" />
+    <ClCompile Include="source\Components\GameObject.cpp" />
+    <ClCompile Include="source\States\GameState.cpp" />
+    <ClCompile Include="source\Managers\InputManager.cpp" />
     <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>

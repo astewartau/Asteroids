@@ -1,14 +1,17 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "Components\Component.h"
+#include "Component.h"
 
 class Component;
 class GameObject : public sf::Drawable {
 public:
+	enum EventCode { SPAWN };
+
 	GameObject(std::vector<Component*> components);
 	~GameObject();
 
 	void Update(sf::Int32 deltaTime);
+	void SendMessage(int message);
 
 	sf::Sprite _sprite;
 	sf::Vector2f _velocity;

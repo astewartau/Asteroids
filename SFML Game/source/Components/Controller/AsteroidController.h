@@ -1,28 +1,30 @@
 #pragma once
 #include "ControllerComponent.h"
-#include "../../Structs.h"
-#include "../../Helpers.h"
+#include "Helpers\Methods.h"
+#include "Helpers\Structs.h"
 
 class AsteroidController : public ControllerComponent {
 public:
 	AsteroidController() {
-		_moveSpeed = 0.15f;
-		_rotationSpeed = 0.02f + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (0.15f - 0.02f)));
+		_moveSpeed = MOVE_SPEED;
+		_rotationSpeed = RandFloat(MIN_ROTATION_SPEED, MAX_ROTATION_SPEED);
 	}
-	~AsteroidController() {}
 
-	void Init(GameObject* gameobject) {
+	void Init() {
 		Vec3<float> velocity;
 		velocity.SetDirection((float)RandInt(1,360));
 		velocity.SetMagnitude(_moveSpeed);
-		gameobject->_velocity = sf::Vector2f{ velocity.GetX(), velocity.GetY() };
+		_gameObject->_velocity = sf::Vector2f{ velocity.GetX(), velocity.GetY() };
 	}
 
-	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
-		gameobject->_sprite.rotate(_rotationSpeed * deltaTime);
+	void Update(sf::Int32 deltaTime) {
+		_gameObject->_sprite.rotate(_rotationSpeed * deltaTime);
 	}
-
 private:
+	const float MIN_ROTATION_SPEED = 0.05f;
+	const float MAX_ROTATION_SPEED = 0.20f;
+	const float MOVE_SPEED = 0.15f;
+
 	float _moveSpeed;
 	float _rotationSpeed;
 };

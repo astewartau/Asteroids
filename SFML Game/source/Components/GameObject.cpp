@@ -10,7 +10,13 @@ GameObject::GameObject(std::vector<Component*> components) {
 
 void GameObject::Update(sf::Int32 deltaTime) {
 	for (Component* component : _components) {
-		component->Update(this, deltaTime);
+		component->Update(deltaTime);
+	}
+}
+
+void GameObject::SendMessage(int message) {
+	for (size_t i = 0; i < _components.size(); i++) {
+		_components[i]->ReceiveMessage(message);
 	}
 }
 

@@ -1,36 +1,7 @@
 #include "GameState.h"
 
-#include "Structs.h"
-#include "InputManager.h"
-#include "Components\Controller\PlayerController.h"
-#include "Components\Graphics\PlayerGraphics.h"
-#include "Components\Physics\AsteroidsPhysics.h"
-#include "Components\Graphics\BackgroundGraphics.h"
-#include "Components\Graphics\AsteroidGraphics.h"
-#include "Components\Controller\AsteroidController.h"
-#include "Components\Spawner\AsteroidSpawner.h"
-
-GameState::GameState(sf::RenderWindow* window) : State(window) {
-	srand((unsigned int)time(NULL));
-
-	GameObject* background = new GameObject({
-		new BackgroundGraphics(&_resourceManager, window->getSize())
-	});
-	_objects.push_back(background);
-
-	GameObject* player = new GameObject({
-		new PlayerController(&_inputManager),
-		new PlayerGraphics(&_resourceManager),
-		new AsteroidsPhysics(GetBounds())
-	});
-	player->_sprite.setPosition(_window->getSize().x * 0.5f, _window->getSize().y * 0.75f);
-	_objects.push_back(player);
-
-	_objects.push_back(new GameObject({
-		new AsteroidSpawner(this, &_resourceManager),
-		new Destroyer(sf::seconds(15), this)
-	}));
-}
+#include "Helpers\Structs.h"
+#include "Managers\InputManager.h"
 
 void GameState::AddObject(GameObject* object) {
 	_objects.push_back(object);
@@ -96,6 +67,4 @@ GameState::~GameState() {
 	for (size_t i = 0; i < _deleteQueue.size(); i++) {
 		delete _deleteQueue[i];
 	}
-
-	printf("DELETED GAME STATE\n");
 }

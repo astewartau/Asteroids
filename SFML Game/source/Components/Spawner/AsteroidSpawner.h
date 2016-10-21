@@ -1,13 +1,13 @@
 #pragma once
 #include "SpawnerComponent.h"
-#include "../../GameState.h"
+#include "States/GameState.h"
+#include "Managers/ResourceManager.h"
 
 class AsteroidSpawner : public SpawnerComponent {
 public:
 	AsteroidSpawner(GameState* state, ResourceManager* resourceManager);
-	~AsteroidSpawner() {}
-	void Init(GameObject* gameobject) {}
-	void Update(GameObject* gameobject, sf::Int32 deltaTime);
+	void Update(sf::Int32 deltaTime);
+	void Spawn();
 private:
 	const float MIN_SPEED = 0.05f;
 	const float MAX_SPEED = 0.20f;

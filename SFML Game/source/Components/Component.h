@@ -1,15 +1,18 @@
 #pragma once
-#include "../GameObject.h"
+#include "Components\GameObject.h"
 
 class GameObject; 
 class Component {
 public:
-	virtual ~Component() {
-		printf("Component destroyed\n");
+	void Init(GameObject* gameObject) {
+		_gameObject = gameObject;
+		Init();
 	};
-	virtual void Init(GameObject* gameobject) = 0;
-	virtual void Update(GameObject* gameobject, sf::Int32 deltaTime) = 0;
-private:
-	
+	virtual void Init() {}
+	virtual void Update(sf::Int32 deltaTime) = 0;
+	virtual void ReceiveMessage(int message) {}
+	virtual ~Component() { };
+protected:
+	GameObject* _gameObject;
 };
 

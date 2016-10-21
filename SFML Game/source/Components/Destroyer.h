@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "../GameState.h"
+#include "States\GameState.h"
 
 class Destroyer : public Component {
 public:
@@ -9,15 +9,13 @@ public:
 		_state = state;
 	}
 
-	~Destroyer() { }
-
-	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
+	void Update(sf::Int32 deltaTime) {
 		if (_clock.getElapsedTime() > _life) {
-			_state->QueueDeleteObject(gameobject);
+			_state->QueueDeleteObject(_gameObject);
 		}
 	}
 
-	void Init(GameObject* gameobject) {
+	void Init() {
 		_clock.restart();
 	}
 private:

@@ -1,8 +1,8 @@
 #pragma once
 #include "ControllerComponent.h"
 
-#include "../../InputManager.h"
-#include "../../GameState.h"
+#include "Managers\InputManager.h"
+#include "States\GameState.h"
 
 #include "../Graphics/BulletGraphics.h"
 #include "../Physics/AsteroidsPhysics.h"
@@ -15,41 +15,42 @@ class PlayerController : public ControllerComponent {
 public:
 	PlayerController(InputManager* inputManager) {
 		_inputManager = inputManager;
-		_speed = 0.0025f;
 	}
-	~PlayerController() {}
 
-	void Init(GameObject* gameobject) {
+	void Init() {
 		_thrustLeft = _inputManager->GetKeyRef(Key::A);
 		_thrustRight = _inputManager->GetKeyRef(Key::D);
 		_thrustUp = _inputManager->GetKeyRef(Key::W);
 		_thrustDown = _inputManager->GetKeyRef(Key::S);
 	}
 
-	void Update(GameObject* gameobject, sf::Int32 deltaTime) {
+	void Update(sf::Int32 deltaTime) {
 		if (*_thrustLeft) {
-			gameobject->_velocity += sf::Vector2f{ -_speed * deltaTime, 0.0f };
-		}
-		if (*_thrustRight) {
-			gameobject->_velocity += sf::Vector2f{ _speed * deltaTime, 0.0f };
-		}
-		if (*_thrustUp) {
-			gameobject->_velocity += sf::Vector2f{ 0.0f, -_speed * deltaTime };
-		}
-		if (*_thrustDown) {
-			gameobject->_velocity += sf::Vector2f{ 0.0f, _speed * deltaTime };
+			_gameObject->_velocity += sf::Vector2f{ -ACCEL_SPEED * deltaTime, 0.0f };
+		} else if (*_thrustRight) {
+			_gameObject->_velocity += sf::Vector2f{ ACCEL_SPEED * deltaTime, 0.0f };
 		}
 
-		sf::Vector2f playerPosition = gameobject->_sprite.getPosition();
+		if (*_thrustUp) {
+			_gameObject->_velocity += sf::Vector2f{ 0.0f, -ACCEL_SPEED * deltaTime };
+		} else if (*_thrustDown) {
+			_gameObject->_velocity += sf::Vector2f{ 0.0f, ACCEL_SPEED * deltaTime };
+		}
+
+		if (_inputManager->IsMousePressed(MouseButton::LEFT)) {
+			_gameObject->SendMessage(GameObject::EventCode::SPAWN);
+		}
+
+		sf::Vector2f playerPosition = _gameObject->_sprite.getPosition();
 		float opposite = playerPosition.x - _inputManager->GetMousePosition().x;
 		float adjacent = playerPosition.y - _inputManager->GetMousePosition().y;
 		float angle = atan2(adjacent, opposite) * (float)(180 / M_PI) - 90.0f;
-		gameobject->_sprite.setRotation(angle);
+		_gameObject->_sprite.setRotation(angle);
 	}
 
 private:
 	bool *_thrustLeft, *_thrustRight, *_thrustUp, *_thrustDown;
 
 	InputManager* _inputManager;
-	float _speed;
+	const float ACCEL_SPEED = 0.002f;
 };

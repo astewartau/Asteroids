@@ -1,18 +1,21 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "State.h"
-#include "GameObject.h"
-#include "InputManager.h"
-#include "ResourceManager.h"
+#include "Components\GameObject.h"
+#include "Managers\InputManager.h"
+#include "Managers\ResourceManager.h"
 
 class GameState : public State {
 public:
-	GameState(sf::RenderWindow* window);
 	~GameState();
 
-	void AddObject(GameObject* object);
 	sf::Vector2u GetBounds();
+	void AddObject(GameObject* object);
 	void QueueDeleteObject(GameObject* object);
+protected:
+	GameState(sf::RenderWindow* window) : State(window) {}
+	ResourceManager _resourceManager;
+	InputManager _inputManager;
 private:
 	void HandleEvents();
 	void Update(sf::Int32 deltaTime);
@@ -20,7 +23,4 @@ private:
 
 	std::vector<GameObject*> _objects;
 	std::vector<GameObject*> _deleteQueue;
-
-	ResourceManager _resourceManager;
-	InputManager _inputManager;
 };
