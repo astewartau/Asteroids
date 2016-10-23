@@ -5,7 +5,7 @@
 #include "../Graphics/BulletGraphics.h"
 #include "../Physics/SpacePhysics.h"
 #include "../Physics/TorusLimiter.h"
-#include "../Destroyer.h"
+#include "../Timed/Destroyer.h"
 
 class BulletSpawner : public SpawnerComponent {
 public:

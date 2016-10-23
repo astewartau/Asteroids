@@ -1,5 +1,5 @@
 #pragma once
-#include "Component.h"
+#include "..\Component.h"
 #include "States\GameState.h"
 
 class Destroyer : public Component {
