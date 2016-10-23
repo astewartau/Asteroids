@@ -21,9 +21,6 @@
     <ClInclude Include="source\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="source\Components\Physics\AsteroidsPhysics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\Components\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,6 +90,12 @@
     <ClInclude Include="source\States\State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="source\Components\Physics\SpacePhysics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Physics\TorusLimiter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -156,6 +159,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="assets\fonts\FreeMono.ttf" />
+    <Font Include="assets\fonts\FreeMono.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>

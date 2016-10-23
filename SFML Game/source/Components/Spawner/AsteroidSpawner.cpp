@@ -1,6 +1,7 @@
 #include "AsteroidSpawner.h"
 
-#include "../Physics/AsteroidsPhysics.h"
+#include "../Physics/SpacePhysics.h"
+#include "../Physics/TorusLimiter.h"
 #include "../Graphics/AsteroidGraphics.h"
 #include "../Controller/AsteroidController.h"
 
@@ -28,7 +29,8 @@ void AsteroidSpawner::Spawn() {
 	// Create asteroid object
 	GameObject* newAsteroid = new GameObject({
 		new AsteroidController(),
-		new AsteroidsPhysics(_bounds),
+		new SpacePhysics(),
+		new TorusLimiter(_bounds),
 		new AsteroidGraphics(_resourceManager)
 	});
 

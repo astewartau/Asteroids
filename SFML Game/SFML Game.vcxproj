@@ -97,13 +97,14 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Components\Physics\TorusLimiter.h" />
     <ClInclude Include="source\States\AsteroidsGame.h" />
     <ClInclude Include="source\Components\Controller\AsteroidController.h" />
     <ClInclude Include="source\Components\Destroyer.h" />
     <ClInclude Include="source\Components\Graphics\AsteroidGraphics.h" />
     <ClInclude Include="source\Components\Graphics\BackgroundGraphics.h" />
     <ClInclude Include="source\Components\Graphics\BulletGraphics.h" />
-    <ClInclude Include="source\Components\Physics\AsteroidsPhysics.h" />
+    <ClInclude Include="source\Components\Physics\SpacePhysics.h" />
     <ClInclude Include="source\Components\Component.h" />
     <ClInclude Include="source\Components\Controller\ControllerComponent.h" />
     <ClInclude Include="source\Components\Spawner\AsteroidSpawner.h" />

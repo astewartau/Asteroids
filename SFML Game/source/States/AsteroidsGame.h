@@ -3,7 +3,8 @@
 
 #include "Components\Controller\PlayerController.h"
 #include "Components\Graphics\PlayerGraphics.h"
-#include "Components\Physics\AsteroidsPhysics.h"
+#include "Components\Physics\SpacePhysics.h"
+#include "Components\Physics\TorusLimiter.h"
 #include "Components\Graphics\BackgroundGraphics.h"
 #include "Components\Spawner\AsteroidSpawner.h"
 #include "Components\Spawner\BulletSpawner.h"
@@ -22,7 +23,8 @@ public:
 		GameObject* player = new GameObject({
 			new PlayerController(&_inputManager),
 			new PlayerGraphics(&_resourceManager),
-			new AsteroidsPhysics(GetBounds()),
+			new SpacePhysics(),
+			new TorusLimiter(GetBounds()),
 			new BulletSpawner(this, &_resourceManager)
 		});
 		player->_sprite.setPosition(_window->getSize().x * 0.5f, _window->getSize().y * 0.75f);

@@ -4,10 +4,6 @@
 #include "Managers\InputManager.h"
 #include "States\GameState.h"
 
-#include "../Graphics/BulletGraphics.h"
-#include "../Physics/AsteroidsPhysics.h"
-#include "../Destroyer.h"
-
 #define _USE_MATH_DEFINES
 #include <math.h>
 
