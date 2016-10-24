@@ -2,10 +2,8 @@
 #include <SFML\Graphics.hpp>
 #include "States\State.h"
 
-class Engine {
+class StateRunner {
 public:
-	Engine();
-
 	void Init();
 	void Go();
 	void SetupGame();

@@ -1,17 +1,17 @@
-#include "Engine.h"
+#include "StateRunner.h"
 #include <iostream>
 
 using namespace std;
 
 int main() {
-	// Create a new game instance
-	Engine* game = new Engine();
+	// Create a new StateRunner
+	StateRunner* stateRunner = new StateRunner();
 
-	// Run the game
-	game->Go();
+	// Run the StateRunner
+	stateRunner->Go();
 
-	// Delete the game
-	delete game;
+	// Delete the StateRunner
+	delete stateRunner;
 
 	// Press any key to continue
 	cout << "Press RETURN to exit\n";

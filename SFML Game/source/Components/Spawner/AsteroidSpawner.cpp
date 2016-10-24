@@ -35,12 +35,12 @@ void AsteroidSpawner::Spawn() {
 	});
 
 	// Generate random initial position outside bounds
-	Vec3<float> position;
+	Vec2<float> position;
 	position.SetDirection((float)RandInt(1, 360));
 	position.SetMagnitude((float)hypot(_bounds.x, _bounds.y));
 
 	// Generate random initial velocity
-	Vec3<float> velocity;
+	Vec2<float> velocity;
 	velocity.SetMagnitude(RandFloat(MIN_SPEED, MAX_SPEED));
 	velocity.SetDirection((float)RandInt(1, 360));
 

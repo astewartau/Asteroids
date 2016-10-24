@@ -121,7 +121,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClInclude Include="source\States\State.h" />
     <ClInclude Include="source\Managers\InputManager.h" />
     <ClInclude Include="include\resource.h" />
-    <ClInclude Include="source\Engine.h" />
+    <ClInclude Include="source\StateRunner.h" />
     <ClInclude Include="source\Managers\ResourceManager.h" />
     <ClInclude Include="source\Helpers\Structs.h" />
   </ItemGroup>
@@ -130,7 +130,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClCompile Include="source\Components\GameObject.cpp" />
     <ClCompile Include="source\States\GameState.cpp" />
     <ClCompile Include="source\Managers\InputManager.cpp" />
-    <ClCompile Include="source\Engine.cpp" />
+    <ClCompile Include="source\StateRunner.cpp" />
     <ClCompile Include="source\main.cpp" />
   </ItemGroup>
   <ItemGroup>

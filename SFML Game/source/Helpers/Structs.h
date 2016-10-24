@@ -3,7 +3,7 @@
 #include <math.h>
 
 template <typename T>
-struct Vec3 {
+struct Vec2 {
 	T GetX() {
 		return x;
 	}

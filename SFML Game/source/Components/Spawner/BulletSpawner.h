@@ -30,7 +30,7 @@ public:
 			laser->_sprite.setPosition(_gameObject->_sprite.getPosition());
 			laser->_sprite.setRotation(_gameObject->_sprite.getRotation());
 
-			Vec3<float> velocity;
+			Vec2<float> velocity;
 			velocity.SetMagnitude(BULLET_SPEED);
 			velocity.SetDirection(_gameObject->_sprite.getRotation() - 90);
 
