@@ -1,6 +1,5 @@
 #pragma once
 #include "State.h"
-#include "AsteroidsGame.h"
 #include "Managers\ResourceManager.h"
 #include "Managers\InputManager.h"
 
@@ -36,7 +35,7 @@ public:
 
 	void Update(sf::Int32 deltaTime) {
 		if (*_startGame) {
-			_nextState = new AsteroidsGame(_window);
+			_nextState = nullptr;
 		}
 	}
 

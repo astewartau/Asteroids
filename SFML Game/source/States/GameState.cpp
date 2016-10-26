@@ -3,16 +3,8 @@
 #include "Helpers\Structs.h"
 #include "Managers\InputManager.h"
 
-void GameState::AddObject(GameObject* object) {
-	_objects.push_back(object);
-}
-
 sf::Vector2u GameState::GetBounds() {
 	return _window->getSize();
-}
-
-void GameState::QueueDeleteObject(GameObject * object) {
-	_deleteQueue.push_back(object);
 }
 
 void GameState::HandleEvents() {
@@ -42,29 +34,10 @@ void GameState::HandleEvents() {
 }
 
 void GameState::Update(sf::Int32 deltaTime) {
-	for (size_t i = 0; i < _objects.size(); i++) {
-		_objects[i]->Update(deltaTime);
-	}
-
-	for (size_t i = 0; i < _deleteQueue.size(); i++) {
-		_objects.erase(std::remove(_objects.begin(), _objects.end(), _deleteQueue[i]), _objects.end());
-		delete _deleteQueue[i];
-	}
-	_deleteQueue.clear();
 }
 
 void GameState::DrawState() {
-	for (GameObject* object : _objects) {
-		_window->draw(*object);
-	}
 }
 
 GameState::~GameState() {
-	for (size_t i = 0; i < _objects.size(); i++) {
-		delete _objects[i];
-	}
-
-	for (size_t i = 0; i < _deleteQueue.size(); i++) {
-		delete _deleteQueue[i];
-	}
 }

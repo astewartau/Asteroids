@@ -97,27 +97,12 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\Components\Physics\TorusLimiter.h" />
-    <ClInclude Include="source\States\AsteroidsGame.h" />
-    <ClInclude Include="source\Components\Controller\AsteroidController.h" />
-    <ClInclude Include="source\Components\Timed\Destroyer.h" />
-    <ClInclude Include="source\Components\Graphics\AsteroidGraphics.h" />
-    <ClInclude Include="source\Components\Graphics\BackgroundGraphics.h" />
-    <ClInclude Include="source\Components\Graphics\BulletGraphics.h" />
-    <ClInclude Include="source\Components\Physics\SpacePhysics.h" />
-    <ClInclude Include="source\Components\Component.h" />
-    <ClInclude Include="source\Components\Controller\ControllerComponent.h" />
-    <ClInclude Include="source\Components\Spawner\AsteroidSpawner.h" />
-    <ClInclude Include="source\Components\Spawner\BulletSpawner.h" />
-    <ClInclude Include="source\Components\Spawner\SpawnerComponent.h" />
-    <ClInclude Include="source\Components\GameObject.h" />
+    <ClInclude Include="source\ECS\Component.h" />
+    <ClInclude Include="source\ECS\Entity.h" />
+    <ClInclude Include="source\ECS\System.h" />
     <ClInclude Include="source\States\GameState.h" />
-    <ClInclude Include="source\Components\Graphics\GraphicsComponent.h" />
     <ClInclude Include="source\Helpers\Methods.h" />
     <ClInclude Include="source\States\MenuState.h" />
-    <ClInclude Include="source\Components\Physics\PhysicsComponent.h" />
-    <ClInclude Include="source\Components\Controller\PlayerController.h" />
-    <ClInclude Include="source\Components\Graphics\PlayerGraphics.h" />
     <ClInclude Include="source\States\State.h" />
     <ClInclude Include="source\Managers\InputManager.h" />
     <ClInclude Include="include\resource.h" />
@@ -126,8 +111,6 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     <ClInclude Include="source\Helpers\Structs.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\Components\Spawner\AsteroidSpawner.cpp" />
-    <ClCompile Include="source\Components\GameObject.cpp" />
     <ClCompile Include="source\States\GameState.cpp" />
     <ClCompile Include="source\Managers\InputManager.cpp" />
     <ClCompile Include="source\StateRunner.cpp" />
@@ -148,6 +131,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\music\through space.ogg" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\sfx_wpn_laser6.wav" />
