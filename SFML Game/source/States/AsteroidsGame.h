@@ -27,6 +27,7 @@ public:
 			new TorusLimiter(GetBounds()),
 			new BulletSpawner(this, &_resourceManager)
 		});
+
 		player->_sprite.setPosition(_window->getSize().x * 0.5f, _window->getSize().y * 0.75f);
 		AddObject(player);
 

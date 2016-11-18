@@ -1,9 +1,11 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Collision.h"
 
 class ResourceManager {
 public:
 	ResourceManager() {}
+
 	~ResourceManager() {
 		for (std::map<std::string, sf::Texture*>::iterator itr = _textureMap.begin(); itr != _textureMap.end(); itr++) {
 			delete itr->second;
@@ -16,14 +18,16 @@ public:
 
 	sf::Texture* GetTexture(std::string filePath) {
 		if (_textureMap.find(filePath) == _textureMap.end()) {
+
 			sf::Texture* texture = new sf::Texture();
-			texture->setSmooth(true);
-			if (!texture->loadFromFile(filePath)) {
+			if (!Collision::CreateTextureAndBitmask(*texture, filePath)) {
 				delete texture;
 				printf("Failed to load texture (%s)!", filePath.c_str());
 			} else {
 				_textureMap[filePath] = texture;
 			}
+
+			texture->setSmooth(true);
 		}
 		return _textureMap[filePath];
 	}

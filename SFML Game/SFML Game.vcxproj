@@ -97,7 +97,12 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="source\Components\BulletCollisions.h" />
+    <ClInclude Include="source\Components\Collision\BulletCollisions.h" />
+    <ClInclude Include="source\Components\Graphics\Header.h" />
     <ClInclude Include="source\Components\Physics\TorusLimiter.h" />
+    <ClInclude Include="source\Components\Timed\AsteroidDestroyer.h" />
+    <ClInclude Include="source\Managers\Collision.h" />
     <ClInclude Include="source\States\AsteroidsGame.h" />
     <ClInclude Include="source\Components\Controller\AsteroidController.h" />
     <ClInclude Include="source\Components\Timed\Destroyer.h" />
@@ -128,6 +133,7 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
   <ItemGroup>
     <ClCompile Include="source\Components\Spawner\AsteroidSpawner.cpp" />
     <ClCompile Include="source\Components\GameObject.cpp" />
+    <ClCompile Include="source\Managers\Collision.cpp" />
     <ClCompile Include="source\States\GameState.cpp" />
     <ClCompile Include="source\Managers\InputManager.cpp" />
     <ClCompile Include="source\StateRunner.cpp" />

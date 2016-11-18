@@ -10,17 +10,20 @@ public:
 	~GameState();
 
 	sf::Vector2u GetBounds();
+	std::map<GameObject*, GameObject*> GetCollisions();
 	void AddObject(GameObject* object);
 	void QueueDeleteObject(GameObject* object);
 protected:
-	GameState(sf::RenderWindow* window) : State(window) {}
+	GameState(sf::RenderWindow* window);
 	ResourceManager _resourceManager;
 	InputManager _inputManager;
 private:
+	void UpdateCollisions();
 	void HandleEvents();
 	void Update(sf::Int32 deltaTime);
 	void DrawState();
 
+	std::map<GameObject*, GameObject*> _collisions;
 	std::vector<GameObject*> _objects;
 	std::vector<GameObject*> _deleteQueue;
 };

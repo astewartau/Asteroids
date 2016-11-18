@@ -5,6 +5,7 @@
 #include "../Graphics/BulletGraphics.h"
 #include "../Physics/SpacePhysics.h"
 #include "../Physics/TorusLimiter.h"
+#include "../Collision/BulletCollisions.h"
 #include "../Timed/Destroyer.h"
 
 class BulletSpawner : public SpawnerComponent {
@@ -23,6 +24,7 @@ public:
 			GameObject* laser = new GameObject({
 				new Destroyer(BULLET_LIFE, _state),
 				new SpacePhysics(),
+				new BulletCollisions(_state),
 				new TorusLimiter(_state->GetBounds()),
 				new BulletGraphics(_resourceManager),
 			});

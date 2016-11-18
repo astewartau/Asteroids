@@ -6,6 +6,7 @@ public:
 	BackgroundGraphics(ResourceManager* resourceManager, sf::Vector2u bounds) : GraphicsComponent(resourceManager) { 
 		_bounds = bounds;
 	}
+
 	void Init() {
 		sf::Texture* texture = _resourceManager->GetTexture("assets/textures/back.png");
 		texture->setRepeated(true);

@@ -2,6 +2,11 @@
 
 #include "Helpers\Structs.h"
 #include "Managers\InputManager.h"
+#include "Managers\Collision.h"
+
+GameState::GameState(sf::RenderWindow* window) : State(window) {
+	_collisions = std::map<GameObject*, GameObject*>();
+}
 
 void GameState::AddObject(GameObject* object) {
 	_objects.push_back(object);
@@ -11,8 +16,24 @@ sf::Vector2u GameState::GetBounds() {
 	return _window->getSize();
 }
 
+std::map<GameObject*, GameObject*> GameState::GetCollisions() {
+	return _collisions;
+}
+
 void GameState::QueueDeleteObject(GameObject * object) {
 	_deleteQueue.push_back(object);
+}
+
+void GameState::UpdateCollisions() {
+	_collisions.clear();
+
+	for (unsigned int i = 0; i < _objects.size(); i++) {
+		for (unsigned int j = i + 1; j < _objects.size(); j++) {
+			if (Collision::CircleTest(_objects[i]->_sprite, _objects[j]->_sprite)) {
+				_collisions.insert(std::make_pair(_objects[i], _objects[j]));
+			}
+		}
+	}
 }
 
 void GameState::HandleEvents() {
@@ -42,6 +63,8 @@ void GameState::HandleEvents() {
 }
 
 void GameState::Update(sf::Int32 deltaTime) {
+	UpdateCollisions();
+
 	for (size_t i = 0; i < _objects.size(); i++) {
 		_objects[i]->Update(deltaTime);
 	}

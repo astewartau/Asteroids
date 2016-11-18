@@ -11,8 +11,8 @@ public:
 private:
 	const float MIN_SPEED = 0.05f;
 	const float MAX_SPEED = 0.20f;
-	const int NUM_SPAWNS = 5;
-	const int SPAWN_INTERVAL = 3;
+	const int NUM_SPAWNS = 10;
+	const int SPAWN_INTERVAL = 2;
 
 	ResourceManager* _resourceManager;
 	sf::Clock _clock;

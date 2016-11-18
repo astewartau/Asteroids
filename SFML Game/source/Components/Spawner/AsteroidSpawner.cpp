@@ -4,6 +4,7 @@
 #include "../Physics/TorusLimiter.h"
 #include "../Graphics/AsteroidGraphics.h"
 #include "../Controller/AsteroidController.h"
+#include "../Timed/AsteroidDestroyer.h"
 
 #include "Helpers\Structs.h"
 #include "Helpers\Methods.h"
@@ -28,6 +29,7 @@ void AsteroidSpawner::Update(sf::Int32 deltaTime) {
 void AsteroidSpawner::Spawn() {
 	// Create asteroid object
 	GameObject* newAsteroid = new GameObject({
+		new AsteroidDestroyer(_state),
 		new AsteroidController(),
 		new SpacePhysics(),
 		new TorusLimiter(_bounds),
