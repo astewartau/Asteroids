@@ -97,9 +97,13 @@ xcopy /E /Y "$(ProjectDir)bin\*.dll" "$(Outdir)" </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="source\Components\BulletCollisions.h" />
     <ClInclude Include="source\Components\Collision\BulletCollisions.h" />
     <ClInclude Include="source\Components\Graphics\Header.h" />
+    <ClInclude Include="source\Components\Sound\AsteroidSound.h" />
+    <ClInclude Include="source\Components\Sound\BackgroundMusic.h" />
+    <ClInclude Include="source\Components\Sound\BulletSound.h" />
+    <ClInclude Include="source\Components\Sound\Music.h" />
+    <ClInclude Include="source\Components\Sound\Sound.h" />
     <ClInclude Include="source\Components\Physics\TorusLimiter.h" />
     <ClInclude Include="source\Components\Timed\AsteroidDestroyer.h" />
     <ClInclude Include="source\Managers\Collision.h" />

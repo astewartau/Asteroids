@@ -13,132 +13,156 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{88cad8a5-d92d-417d-a9fd-25f2ec6e2886}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player\Bullet">
+      <UniqueIdentifier>{f04d924d-2a3a-4a4d-afc9-51bcc503e561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Asteroid">
+      <UniqueIdentifier>{b07da17a-4af4-4322-bc2c-e10474561274}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game mode">
+      <UniqueIdentifier>{406cb486-acd3-44f7-b847-ea15a23065f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Background">
+      <UniqueIdentifier>{e0d5d089-33ca-494c-aba9-a56324526808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Other">
+      <UniqueIdentifier>{03337074-c039-4a1e-9118-04f153e38918}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Graphics\GraphicsComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Physics\PhysicsComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="source\Components\Controller\PlayerController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="source\Components\Graphics\PlayerGraphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Graphics\AsteroidGraphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Controller\AsteroidController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Graphics\BulletGraphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Spawner\SpawnerComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Spawner\AsteroidSpawner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Controller\ControllerComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Graphics\BackgroundGraphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Spawner\BulletSpawner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Managers\InputManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Managers\ResourceManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Helpers\Structs.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Helpers\Methods.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\States\AsteroidsGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\States\GameState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\States\MenuState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\States\State.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Physics\SpacePhysics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Physics\TorusLimiter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Timed\Destroyer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\StateRunner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Graphics\Header.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Collision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\BulletCollisions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="source\Components\Timed\AsteroidDestroyer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
     <ClInclude Include="source\Components\Collision\BulletCollisions.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Player\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Graphics\BulletGraphics.h">
+      <Filter>Header Files\Player\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Sound\BulletSound.h">
+      <Filter>Header Files\Player\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Spawner\BulletSpawner.h">
+      <Filter>Header Files\Player\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Controller\AsteroidController.h">
+      <Filter>Header Files\Asteroid</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Timed\AsteroidDestroyer.h">
+      <Filter>Header Files\Asteroid</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Graphics\AsteroidGraphics.h">
+      <Filter>Header Files\Asteroid</Filter>
+    </ClInclude>
+    <ClInclude Include="source\States\AsteroidsGame.h">
+      <Filter>Header Files\Game mode</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Spawner\AsteroidSpawner.h">
+      <Filter>Header Files\Game mode</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Physics\TorusLimiter.h">
+      <Filter>Header Files\Game mode</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Physics\SpacePhysics.h">
+      <Filter>Header Files\Game mode</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Graphics\BackgroundGraphics.h">
+      <Filter>Header Files\Background</Filter>
     </ClInclude>
     <ClInclude Include="source\Managers\Collision.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Component.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Controller\ControllerComponent.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Timed\Destroyer.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\GameObject.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\States\GameState.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Graphics\GraphicsComponent.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Graphics\Header.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\InputManager.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\States\MenuState.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Helpers\Methods.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Physics\PhysicsComponent.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="include\resource.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\ResourceManager.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Sound\Sound.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Spawner\SpawnerComponent.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\States\State.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\StateRunner.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Helpers\Structs.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Sound\BackgroundMusic.h">
+      <Filter>Header Files\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Sound\Music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Components\Sound\AsteroidSound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="source\Components\Spawner\AsteroidSpawner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Components\GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Managers\InputManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\States\GameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\StateRunner.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Collision.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Game mode</Filter>
     </ClCompile>
     <ClCompile Include="source\Managers\Collision.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Components\GameObject.cpp">
+      <Filter>Header Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="source\States\GameState.cpp">
+      <Filter>Header Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\InputManager.cpp">
+      <Filter>Header Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Header Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="source\StateRunner.cpp">
+      <Filter>Header Files\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

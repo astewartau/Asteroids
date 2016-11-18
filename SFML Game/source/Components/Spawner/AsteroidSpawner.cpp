@@ -5,6 +5,7 @@
 #include "../Graphics/AsteroidGraphics.h"
 #include "../Controller/AsteroidController.h"
 #include "../Timed/AsteroidDestroyer.h"
+#include "../Sound/AsteroidSound.h"
 
 #include "Helpers\Structs.h"
 #include "Helpers\Methods.h"
@@ -30,6 +31,7 @@ void AsteroidSpawner::Spawn() {
 	// Create asteroid object
 	GameObject* newAsteroid = new GameObject({
 		new AsteroidDestroyer(_state),
+		new AsteroidSound(_resourceManager),
 		new AsteroidController(),
 		new SpacePhysics(),
 		new TorusLimiter(_bounds),

@@ -5,7 +5,7 @@
 class Component;
 class GameObject : public sf::Drawable {
 public:
-	enum EventCode { SPAWN, BULLET_COLLISION };
+	enum EventCode { SPAWN, BULLET_COLLISION, SHOOT };
 
 	GameObject(std::vector<Component*> components);
 	~GameObject();

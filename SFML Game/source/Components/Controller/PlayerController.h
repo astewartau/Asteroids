@@ -11,6 +11,7 @@ class PlayerController : public ControllerComponent {
 public:
 	PlayerController(InputManager* inputManager) {
 		_inputManager = inputManager;
+		_firstShot = true;
 	}
 
 	void Init() {
@@ -34,7 +35,11 @@ public:
 		}
 
 		if (_inputManager->IsMousePressed(MouseButton::LEFT)) {
-			_gameObject->SendMessage(GameObject::EventCode::SPAWN);
+			if ((_clock.getElapsedTime() >= SPAWN_COOLDOWN) || (_firstShot)) {
+				_clock.restart();
+				_firstShot = false;
+				_gameObject->SendMessage(GameObject::EventCode::SHOOT);
+			}
 		}
 
 		sf::Vector2f playerPosition = _gameObject->_sprite.getPosition();
@@ -49,4 +54,9 @@ private:
 
 	InputManager* _inputManager;
 	const float ACCEL_SPEED = 0.002f;
+
+	bool _firstShot;
+	const sf::Time SPAWN_COOLDOWN = sf::seconds(0.15f);
+	sf::Clock _clock;
+
 };

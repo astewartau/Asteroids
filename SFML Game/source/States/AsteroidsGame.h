@@ -8,6 +8,7 @@
 #include "Components\Graphics\BackgroundGraphics.h"
 #include "Components\Spawner\AsteroidSpawner.h"
 #include "Components\Spawner\BulletSpawner.h"
+#include "Components\Sound\BackgroundMusic.h"
 
 class AsteroidsGame : public GameState {
 public:
@@ -16,7 +17,8 @@ public:
 
 		// Create background
 		AddObject(new GameObject({
-			new BackgroundGraphics(&_resourceManager, _window->getSize())
+			new BackgroundGraphics(&_resourceManager, _window->getSize()),
+			new BackgroundMusic(&_resourceManager)
 		}));
 
 		// Create player
@@ -25,6 +27,7 @@ public:
 			new PlayerGraphics(&_resourceManager),
 			new SpacePhysics(),
 			new TorusLimiter(GetBounds()),
+			new BulletSound(&_resourceManager),
 			new BulletSpawner(this, &_resourceManager)
 		});
 
@@ -34,7 +37,7 @@ public:
 		// Create Asteroid Spawner
 		AddObject(new GameObject({
 			new AsteroidSpawner(this, &_resourceManager),
-			new Destroyer(sf::seconds(15), this)
+			new Destroyer(sf::seconds(20), this)
 		}));
 	}
 };
