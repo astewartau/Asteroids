@@ -28,7 +28,7 @@ public:
 			new SpacePhysics(),
 			new TorusLimiter(GetBounds()),
 			new BulletSound(&_resourceManager),
-			new BulletSpawner(this, &_resourceManager)
+			new BulletSpawner(this)
 		});
 
 		player->_sprite.setPosition(_window->getSize().x * 0.5f, _window->getSize().y * 0.75f);
@@ -36,7 +36,7 @@ public:
 
 		// Create Asteroid Spawner
 		AddObject(new GameObject({
-			new AsteroidSpawner(this, &_resourceManager),
+			new AsteroidSpawner(this),
 			new Destroyer(sf::seconds(20), this)
 		}));
 	}

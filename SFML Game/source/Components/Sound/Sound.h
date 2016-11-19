@@ -10,7 +10,7 @@ public:
 
 	void Init() {}
 	void Update(sf::Int32 deltaTime) {}
-	virtual void ReceiveMessage(int message) {}
+	virtual void ReceiveMessage(GameObject* sender, int message) {}
 
 	~Sound() {}
 protected:

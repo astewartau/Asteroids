@@ -21,13 +21,17 @@ public:
 		);
 
 		if (it != collisions.end()) {
-			it->first->SendMessage(GameObject::EventCode::BULLET_COLLISION);
-			it->second->SendMessage(GameObject::EventCode::BULLET_COLLISION);
+			// Inform the object that it has been hit by a bullet
+			if (it->first == _gameObject) {
+				it->second->SendMessage(_gameObject, GameObject::EventCode::BULLET_COLLISION);
+			} else {
+				it->first->SendMessage(_gameObject, GameObject::EventCode::BULLET_COLLISION);
+			}
 		}
 	}
 
-	void ReceiveMessage(int message) {
-
+	void ReceiveMessage(GameObject* sender, int message) {
+		
 	}
 
 	~BulletCollisions() {

@@ -10,6 +10,7 @@ public:
 	~GameState();
 
 	sf::Vector2u GetBounds();
+	ResourceManager* GetResourceManager();
 	std::map<GameObject*, GameObject*> GetCollisions();
 	void AddObject(GameObject* object);
 	void QueueDeleteObject(GameObject* object);

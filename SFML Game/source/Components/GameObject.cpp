@@ -14,9 +14,9 @@ void GameObject::Update(sf::Int32 deltaTime) {
 	}
 }
 
-void GameObject::SendMessage(int message) {
+void GameObject::SendMessage(GameObject* sender, int message) {
 	for (size_t i = 0; i < _components.size(); i++) {
-		_components[i]->ReceiveMessage(message);
+		_components[i]->ReceiveMessage(sender, message);
 	}
 }
 

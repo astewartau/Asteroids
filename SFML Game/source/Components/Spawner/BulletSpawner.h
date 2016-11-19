@@ -11,9 +11,9 @@
 
 class BulletSpawner : public SpawnerComponent {
 public:
-	BulletSpawner(GameState* state, ResourceManager* resourceManager) {
+	BulletSpawner(GameState* state) {
 		_state = state;
-		_resourceManager = resourceManager;
+		_resourceManager = state->GetResourceManager();
 	}
 
 	void Spawn() {
@@ -36,7 +36,7 @@ public:
 		_state->AddObject(laser);
 	}
 
-	void ReceiveMessage(int message) {
+	void ReceiveMessage(GameObject* sender, int message) {
 		if (message == GameObject::EventCode::SHOOT) {
 			Spawn();
 		}

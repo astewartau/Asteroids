@@ -38,7 +38,7 @@ public:
 			if ((_clock.getElapsedTime() >= SPAWN_COOLDOWN) || (_firstShot)) {
 				_clock.restart();
 				_firstShot = false;
-				_gameObject->SendMessage(GameObject::EventCode::SHOOT);
+				_gameObject->SendMessage(_gameObject, GameObject::EventCode::SHOOT);
 			}
 		}
 

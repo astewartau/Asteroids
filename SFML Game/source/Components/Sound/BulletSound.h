@@ -7,7 +7,7 @@ public:
 		_sound = _resourceManager->GetSound("assets/sounds/sfx_wpn_laser6.wav");
 	}
 
-	void ReceiveMessage(int message) {
+	void ReceiveMessage(GameObject* sender, int message) {
 		if (message == GameObject::EventCode::SHOOT) {
 			Play();
 		}

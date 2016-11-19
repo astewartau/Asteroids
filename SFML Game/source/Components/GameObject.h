@@ -11,7 +11,7 @@ public:
 	~GameObject();
 
 	void Update(sf::Int32 deltaTime);
-	void SendMessage(int message);
+	void SendMessage(GameObject* sender, int message);
 
 	sf::Sprite _sprite;
 	sf::Vector2f _velocity;

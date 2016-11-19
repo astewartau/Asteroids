@@ -16,12 +16,18 @@ sf::Vector2u GameState::GetBounds() {
 	return _window->getSize();
 }
 
+ResourceManager *GameState::GetResourceManager() {
+	return &_resourceManager;
+}
+
 std::map<GameObject*, GameObject*> GameState::GetCollisions() {
 	return _collisions;
 }
 
 void GameState::QueueDeleteObject(GameObject * object) {
-	_deleteQueue.push_back(object);
+	if (std::find(_deleteQueue.begin(), _deleteQueue.end(), object) == _deleteQueue.end()) {
+		_deleteQueue.push_back(object);
+	}
 }
 
 void GameState::UpdateCollisions() {
@@ -69,9 +75,9 @@ void GameState::Update(sf::Int32 deltaTime) {
 		_objects[i]->Update(deltaTime);
 	}
 
-	for (size_t i = 0; i < _deleteQueue.size(); i++) {
-		_objects.erase(std::remove(_objects.begin(), _objects.end(), _deleteQueue[i]), _objects.end());
-		delete _deleteQueue[i];
+	for (GameObject* object : _deleteQueue) {
+		_objects.erase(std::remove(_objects.begin(), _objects.end(), object), _objects.end());
+		delete object;
 	}
 	_deleteQueue.clear();
 }

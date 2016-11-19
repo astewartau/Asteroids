@@ -5,7 +5,7 @@
 
 class AsteroidSpawner : public SpawnerComponent {
 public:
-	AsteroidSpawner(GameState* state, ResourceManager* resourceManager);
+	AsteroidSpawner(GameState* state);
 	void Update(sf::Int32 deltaTime);
 	void Spawn();
 private:

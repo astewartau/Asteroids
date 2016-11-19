@@ -10,9 +10,9 @@
 #include "Helpers\Structs.h"
 #include "Helpers\Methods.h"
 
-AsteroidSpawner::AsteroidSpawner(GameState* state, ResourceManager* resourceManager) {
+AsteroidSpawner::AsteroidSpawner(GameState* state) {
 	_state = state;
-	_resourceManager = resourceManager;
+	_resourceManager = state->GetResourceManager();
 	_bounds = state->GetBounds();
 	_remainingSpawns = NUM_SPAWNS;
 }

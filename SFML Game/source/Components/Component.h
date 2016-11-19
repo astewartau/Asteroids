@@ -10,7 +10,7 @@ public:
 	};
 	virtual void Init() {}
 	virtual void Update(sf::Int32 deltaTime) = 0;
-	virtual void ReceiveMessage(int message) {}
+	virtual void ReceiveMessage(GameObject* sender, int message) {}
 	virtual ~Component() { };
 protected:
 	GameObject* _gameObject;
